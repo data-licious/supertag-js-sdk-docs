@@ -105,15 +105,13 @@
               <tr>
                 <td>options</td>
                 <td>Object</td>
-                <td><p><code>id</code> is mandatory</p></td>
+                <td><p>The project ID</p></td>
               </tr>
             </tbody>
           </table>
           <div class="description"><p>Gets the tag tree for the given project</p> </div>
-          <pre><code class="language-javascript">StSDK.prototype.getTagTree = function(options) {
-    this.validatePlainObj('Argument', options);
-    var id;
-    this.validateInt('ID', id = options.id);
+          <pre><code class="language-javascript">StSDK.prototype.getTagTree = function(id) {
+    this.validateInt('Project ID', id);
 
     return this.get('projects/' + id + '/tags');
 };
