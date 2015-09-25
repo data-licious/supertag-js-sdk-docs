@@ -74,26 +74,24 @@
             <li><a href="st.js.html">st.js</a></li>
             <li><a href="st.app.js.html">st.app.js</a></li>
             <li><a href="st.company.js.html">st.company.js</a></li>
-            <li><a href="st.dataobjects.js.html">st.dataobjects.js</a></li>
+            <li class="active"><a href="st.dataobjects.js.html">st.dataobjects.js</a></li>
             <li><a href="st.helper.js.html">st.helper.js</a></li>
-            <li class="active"><a href="st.project.js.html">st.project.js</a></li>
+            <li><a href="st.project.js.html">st.project.js</a></li>
             <li><a href="st.tag.js.html">st.tag.js</a></li>
           </ul>
           <div class="scrollspy">
             <ul class="nav nav-list bs-docs-sidenav affix-top">
-              <li><a href="#getCompaniesAndProjects"><i class="alert alert-info"></i><span>getCompaniesAndProjects</span></a>
-              </li>
-              <li><a href="#getProject"><i class="alert alert-info"></i><span>getProject</span></a>
+              <li><a href="#getProjectDataObjects"><i class="alert alert-info"></i><span>getProjectDataObjects</span></a>
               </li>
             </ul>
           </div>
         </div>
         <div class="span9">
-          <section id="getCompaniesAndProjects">
-            <h1>getCompaniesAndProjects</h1>
+          <section id="getProjectDataObjects">
+            <h1>getProjectDataObjects</h1>
             <h5 class="subheader"></h5>
             <p>
-              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getCompaniesAndProjects()</span>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getProjectDataObjects()</span>
             </p>
           </section>
           <table class="table table-bordered table-striped">
@@ -106,52 +104,15 @@
             </thead>
             <tbody>
               <tr>
-                <td>limit</td>
+                <td>projectId</td>
                 <td>Number</td>
-                <td><p>The limit of search</p></td>
-              </tr>
-              <tr>
-                <td>filter</td>
-                <td>String</td>
-                <td><p>The filter of the search</p></td>
+                <td><p>ID of the project</p></td>
               </tr>
             </tbody>
           </table>
-          <div class="description"><p>Gets companies and projects relevant to the specific user</p> </div>
-          <pre><code class="language-javascript">StSDK.prototype.getCompaniesAndProjects = function(limit, filter) {
-    var params = this.buildUrlParams({
-        limit: limit,
-        filter: filter
-    });
-
-    return this.get('companies/projects' + params);
-};</code></pre>
-          <section id="getProject">
-            <h1>getProject</h1>
-            <h5 class="subheader"></h5>
-            <p>
-              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getProject()</span>
-            </p>
-          </section>
-          <table class="table table-bordered table-striped">
-            <thead>
-              <tr>
-                <th style="width:20%">Option name</th>
-                <th style="width:20%">Type</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>id</td>
-                <td>Number</td>
-                <td><p>The project ID</p></td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="description"><p>Gets the details of a given project</p> </div>
-          <pre><code class="language-javascript">StSDK.prototype.getProject = function(id) {
-    return this.get('projects/' + id);
+          <div class="description"><p>Gets all data objects available in the specific project</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getProjectDataObjects = function(projectId) {
+    return this.get('/projects/' + projectId + '/data-objects');
 };
 }(window));</code></pre>
         </div>
