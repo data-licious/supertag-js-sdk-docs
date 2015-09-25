@@ -95,7 +95,28 @@
               <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getCompaniesAndProjects()</span>
             </p>
           </section>
-          <div class="description"><p>Returns companies and projects relevant to the specific user</p> </div>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>limit</td>
+                <td>Number</td>
+                <td><p>The limit of search</p></td>
+              </tr>
+              <tr>
+                <td>filter</td>
+                <td>String</td>
+                <td><p>The filter of the search</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Gets companies and projects relevant to the specific user</p> </div>
           <pre><code class="language-javascript">StSDK.prototype.getCompaniesAndProjects = function(limit, filter) {
     var params = this.buildUrlParams({
         limit: limit,
@@ -111,7 +132,23 @@
               <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getProject()</span>
             </p>
           </section>
-          <div class="description"><p>Returns project details</p> </div>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>The project ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Gets the details of a given project</p> </div>
           <pre><code class="language-javascript">StSDK.prototype.getProject = function(id) {
     return this.get('projects/' + id);
 };

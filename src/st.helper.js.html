@@ -93,18 +93,34 @@
               <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.buildUrlParams()</span>
             </p>
           </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>params</td>
+                <td>Object</td>
+                <td><p>The query parameters in an object literal</p></td>
+              </tr>
+            </tbody>
+          </table>
           <div class="description"><p>Compile params object in URL parameters. Will not append param on empty value.<br />Please, note that &quot;?&quot; will be added in front if result is not an empty string.</p> </div>
           <pre><code class="language-javascript">StSDK.prototype.buildUrlParams = function(params) {
     var filtered = {};
     for (var key in params) {
-        if (null !== params[key] &amp;&amp; undefined !== params[key] &amp;&amp; &quot;&quot; !== params[key]) {
+        if (null !== params[key] &amp;&amp; undefined !== params[key] &amp;&amp; '' !== params[key]) {
             filtered[key] = params[key];
         }
     }
 
     var res = $.param(filtered);
 
-    return res ? &quot;?&quot; + res : res;
+    return res ? '?' + res : res;
 };
 }(window, jQuery));</code></pre>
         </div>

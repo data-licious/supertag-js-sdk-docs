@@ -144,17 +144,15 @@
             </thead>
             <tbody>
               <tr>
-                <td>options</td>
-                <td>Object</td>
-                <td><p><code>id</code> is mandatory</p></td>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>The app template ID</p></td>
               </tr>
             </tbody>
           </table>
           <div class="description"><p>Gets details of a given app template</p> </div>
-          <pre><code class="language-javascript">StSDK.prototype.getAppTemplate = function(options) {
-    this.validatePlainObj('Argument', options);
-    var id;
-    this.validateInt('ID', id = options.id);
+          <pre><code class="language-javascript">StSDK.prototype.getAppTemplate = function(id) {
+    this.validateInt('App template ID', id);
 
     return this.get('app-templates/' + id);
 };</code></pre>
@@ -175,19 +173,17 @@
             </thead>
             <tbody>
               <tr>
-                <td>options</td>
+                <td>data</td>
                 <td>Object</td>
-                <td><p><code>content</code> is mandatory</p></td>
+                <td><p>The app template data</p></td>
               </tr>
             </tbody>
           </table>
           <div class="description"><p>Creates an app template</p> </div>
-          <pre><code class="language-javascript">StSDK.prototype.createAppTemplate = function(options) {
-    this.validatePlainObj('Argument', options);
-    var content;
-    this.validatePlainObj('Content', content = options.content);
+          <pre><code class="language-javascript">StSDK.prototype.createAppTemplate = function(data) {
+    this.validatePlainObj('App template data', data);
 
-    return this.post('app-templates', null, content);
+    return this.post('app-templates', null, data);
 };</code></pre>
           <section id="updateAppTemplate">
             <h1>updateAppTemplate</h1>
@@ -206,14 +202,19 @@
             </thead>
             <tbody>
               <tr>
-                <td>options</td>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>The app template ID</p></td>
+              </tr>
+              <tr>
+                <td>data</td>
                 <td>Object</td>
-                <td><p><code>id</code> and <code>content</code> are mandatory</p></td>
+                <td><p>The app template data</p></td>
               </tr>
             </tbody>
           </table>
           <div class="description"><p>Updates an app template</p> </div>
-          <pre><code class="language-javascript">StSDK.prototype.updateAppTemplate = function(options) {
+          <pre><code class="language-javascript">StSDK.prototype.updateAppTemplate = function(id, data) {
     this.validatePlainObj('Argument', options);
     var id, content;
     this.validateInt('ID', id = options.id);
@@ -238,17 +239,15 @@
             </thead>
             <tbody>
               <tr>
-                <td>options</td>
-                <td>Object</td>
-                <td><p><code>id</code> is mandatory</p></td>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>The app template ID</p></td>
               </tr>
             </tbody>
           </table>
           <div class="description"><p>Deletes an app template</p> </div>
-          <pre><code class="language-javascript">StSDK.prototype.deleteAppTemplate = function(options) {
-    this.validatePlainObj('Argument', options);
-    var id;
-    this.validateInt('ID', id = options.id);
+          <pre><code class="language-javascript">StSDK.prototype.deleteAppTemplate = function(id) {
+    this.validateInt('ID', id);
 
     return this.delete('app-templates/' + id);
 };</code></pre>
@@ -269,9 +268,9 @@
             </thead>
             <tbody>
               <tr>
-                <td>options</td>
-                <td>Object</td>
-                <td><p><code>format</code> is mandatory and value should be 1 (default), 2 or 3</p></td>
+                <td>format</td>
+                <td>String</td>
+                <td><p>The format of the response, options being <code>&#39;flat&#39;</code> (default), <code>&#39;grouped&#39;</code> or <code>&#39;standard&#39;</code></p></td>
               </tr>
             </tbody>
           </table>
@@ -396,9 +395,8 @@
      });
 </code></pre>
  </div>
-          <pre><code class="language-javascript">StSDK.prototype.getAppTemplates = function(options) {
-    this.validatePlainObj('Argument', options);
-    var format = options.format || this.APP_TEMPLATE_FORMAT_FLAT;
+          <pre><code class="language-javascript">StSDK.prototype.getAppTemplates = function(format) {
+    var format = format || this.APP_TEMPLATE_FORMAT_FLAT;
     if (!(format in [this.APP_TEMPLATE_FORMAT_FLAT, this.APP_TEMPLATE_FORMAT_GROUPED, this.APP_TEMPLATE_FORMAT_STANDARD])) {
         this.error('[Format] is not valid.');
     }
