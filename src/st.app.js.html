@@ -105,29 +105,29 @@
             <h1>APP_TEMPLATE_FORMAT_FLAT</h1>
             <h5 class="subheader"></h5>
             <p>
-              <div class="label label-success radius ctx-type">property</div><span>StSDK.prototype.APP_TEMPLATE_FORMAT_FLAT</span>
+              <div class="label label-success radius ctx-type">property</div><span>StSDK.APP_TEMPLATE_FORMAT_FLAT</span>
             </p>
           </section>
           <div class="description"> </div>
-          <pre><code class="language-javascript">StSDK.prototype.APP_TEMPLATE_FORMAT_FLAT = 'flat';</code></pre>
+          <pre><code class="language-javascript">StSDK.APP_TEMPLATE_FORMAT_FLAT = 'flat';</code></pre>
           <section id="APP_TEMPLATE_FORMAT_GROUPED">
             <h1>APP_TEMPLATE_FORMAT_GROUPED</h1>
             <h5 class="subheader"></h5>
             <p>
-              <div class="label label-success radius ctx-type">property</div><span>StSDK.prototype.APP_TEMPLATE_FORMAT_GROUPED</span>
+              <div class="label label-success radius ctx-type">property</div><span>StSDK.APP_TEMPLATE_FORMAT_GROUPED</span>
             </p>
           </section>
           <div class="description"> </div>
-          <pre><code class="language-javascript">StSDK.prototype.APP_TEMPLATE_FORMAT_GROUPED = 'grouped';</code></pre>
+          <pre><code class="language-javascript">StSDK.APP_TEMPLATE_FORMAT_GROUPED = 'grouped';</code></pre>
           <section id="APP_TEMPLATE_FORMAT_STANDARD">
             <h1>APP_TEMPLATE_FORMAT_STANDARD</h1>
             <h5 class="subheader"></h5>
             <p>
-              <div class="label label-success radius ctx-type">property</div><span>StSDK.prototype.APP_TEMPLATE_FORMAT_STANDARD</span>
+              <div class="label label-success radius ctx-type">property</div><span>StSDK.APP_TEMPLATE_FORMAT_STANDARD</span>
             </p>
           </section>
           <div class="description"> </div>
-          <pre><code class="language-javascript">StSDK.prototype.APP_TEMPLATE_FORMAT_STANDARD = 'standard';</code></pre>
+          <pre><code class="language-javascript">StSDK.APP_TEMPLATE_FORMAT_STANDARD = 'standard';</code></pre>
           <section id="getAppTemplate">
             <h1>getAppTemplate</h1>
             <h5 class="subheader"></h5>
@@ -153,7 +153,7 @@
           </table>
           <div class="description"><p>Gets details of a given app template</p> </div>
           <pre><code class="language-javascript">StSDK.prototype.getAppTemplate = function(id) {
-    this.validateInt('App template ID', id);
+    StSDK.validateInt('App template ID', id);
 
     return this.get('app-templates/' + id);
 };</code></pre>
@@ -182,7 +182,7 @@
           </table>
           <div class="description"><p>Creates an app template</p> </div>
           <pre><code class="language-javascript">StSDK.prototype.createAppTemplate = function(data) {
-    this.validatePlainObj('App template data', data);
+    StSDK.validatePlainObj('App template data', data);
 
     return this.post('app-templates', null, data);
 };</code></pre>
@@ -216,8 +216,8 @@
           </table>
           <div class="description"><p>Updates an app template</p> </div>
           <pre><code class="language-javascript">StSDK.prototype.updateAppTemplate = function(id, data) {
-    this.validateInt('App template ID', id);
-    this.validatePlainObj('App template data', data);
+    StSDK.validateInt('App template ID', id);
+    StSDK.validatePlainObj('App template data', data);
 
     return this.put('app-templates/' + id, null, data);
 };</code></pre>
@@ -246,7 +246,7 @@
           </table>
           <div class="description"><p>Deletes an app template</p> </div>
           <pre><code class="language-javascript">StSDK.prototype.deleteAppTemplate = function(id) {
-    this.validateInt('ID', id);
+    StSDK.validateInt('ID', id);
 
     return this.delete('app-templates/' + id);
 };</code></pre>
@@ -395,9 +395,9 @@
 </code></pre>
  </div>
           <pre><code class="language-javascript">StSDK.prototype.getAppTemplates = function(format) {
-    var format = format || this.APP_TEMPLATE_FORMAT_FLAT;
-    if (!~$.inArray(format, [this.APP_TEMPLATE_FORMAT_FLAT, this.APP_TEMPLATE_FORMAT_GROUPED, this.APP_TEMPLATE_FORMAT_STANDARD])) {
-        this.error('[Format] is not valid.');
+    var format = format || StSDK.APP_TEMPLATE_FORMAT_FLAT;
+    if (!~$.inArray(format, [StSDK.APP_TEMPLATE_FORMAT_FLAT, StSDK.APP_TEMPLATE_FORMAT_GROUPED, StSDK.APP_TEMPLATE_FORMAT_STANDARD])) {
+        StSDK.error('[Format] is not valid.');
     }
 
     return this.get('app-templates', null, {
@@ -429,8 +429,8 @@
                 }
             });
 
-            if (this.APP_TEMPLATE_FORMAT_GROUPED === format) {
-                return this.jsonEncode(grouped);
+            if (StSDK.APP_TEMPLATE_FORMAT_GROUPED === format) {
+                return StSDK.jsonEncode(grouped);
             }
 
             $.each(grouped, function(vendorName, platforms) {
@@ -447,7 +447,7 @@
                 });
             });
 
-            return this.jsonEncode(standard);
+            return StSDK.jsonEncode(standard);
         }
     });
 };

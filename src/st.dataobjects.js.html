@@ -111,8 +111,10 @@
             </tbody>
           </table>
           <div class="description"><p>Gets all data objects available in the specific project</p> </div>
-          <pre><code class="language-javascript">StSDK.prototype.getProjectDataObjects = function(projectId) {
-    return this.get('projects/' + projectId + '/data-objects');
+          <pre><code class="language-javascript">StSDK.prototype.getProjectDataObjects = function(id) {
+    StSDK.validateInt('Project ID', id);
+
+    return this.get('projects/' + id + '/data-objects');
 };
 }(window));</code></pre>
         </div>

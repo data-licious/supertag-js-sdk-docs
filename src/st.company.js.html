@@ -112,6 +112,8 @@
           </table>
           <div class="description"><p>Gets the details of a given company</p> </div>
           <pre><code class="language-javascript">StSDK.prototype.getCompany = function (id) {
+    StSDK.validateInt('Company ID', id);
+
     return this.get('companies/' + id);
 };
 }(window));</code></pre>
