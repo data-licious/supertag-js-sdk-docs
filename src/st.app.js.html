@@ -273,7 +273,7 @@
               </tr>
             </tbody>
           </table>
-          <div class="description"><p>Gets details of all/some app templates<br />Examples:</p><pre><code class="lang-javascript">     $.when(_stSDK.getAppTemplates({format: 1})).then(function(json) {
+          <div class="description"><p>Gets details of all/some app templates<br />Examples:</p><pre><code class="lang-javascript">     $.when(_stSDK.getAppTemplates(&#39;flat&#39;)).then(function(json) {
          // Variable `json` comes with structure:
          //  {
          //      &quot;app_template&quot;: {
@@ -283,7 +283,7 @@
          //  }
      });
 </code></pre>
-<pre><code class="lang-javascript">     $.when(_stSDK.getAppTemplates({format: 2})).then(function(json) {
+<pre><code class="lang-javascript">     $.when(_stSDK.getAppTemplates(&#39;grouped&#39;)).then(function(json) {
          // Variable `json` comes with structure:
          //  {
          //    &quot;Google&quot;: {
@@ -333,7 +333,7 @@
          //  }
      });
 </code></pre>
-<pre><code class="lang-javascript">     $.when(_stSDK.getAppTemplates({format: 3})).then(function(json) {
+<pre><code class="lang-javascript">     $.when(_stSDK.getAppTemplates(&#39;standard&#39;)).then(function(json) {
          // Variable `json` comes with structure:
          //  [
          //    {
@@ -401,13 +401,13 @@
     }
 
     return this.get('app-templates', null, {
-        'dataFilter': function(data, type) {
+        dataFilter: function(data, type) {
             if (this.APP_TEMPLATE_FORMAT_FLAT === format || 'json' !== type) {
                 return data;
             }
 
             data = this.jsonDecode(data);
-            if (!('app_templates' in data || !data[app_templates])) {
+            if (!('app_templates' in data) || !data['app_templates']) {
                 return data;
             }
 
