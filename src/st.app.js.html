@@ -216,12 +216,10 @@
           </table>
           <div class="description"><p>Updates an app template</p> </div>
           <pre><code class="language-javascript">StSDK.prototype.updateAppTemplate = function(id, data) {
-    this.validatePlainObj('Argument', options);
-    var id, content;
-    this.validateInt('ID', id = options.id);
-    this.validatePlainObj('Content', content = options.content);
+    this.validateInt('App template ID', id);
+    this.validatePlainObj('App template data', data);
 
-    return this.put('app-templates/' + id, null, content);
+    return this.put('app-templates/' + id, null, data);
 };</code></pre>
           <section id="deleteAppTemplate">
             <h1>deleteAppTemplate</h1>
