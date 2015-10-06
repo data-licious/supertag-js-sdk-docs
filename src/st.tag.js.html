@@ -85,9 +85,15 @@
               </li>
               <li><a href="#PROJECT_TAG_TREE_FORMAT_KENDOUI"><i class="alert alert-success"></i><span>PROJECT_TAG_TREE_FORMAT_KENDOUI</span></a>
               </li>
+              <li><a href="#PROJECT_TAG_ACTION_ACTIVATE"><i class="alert alert-success"></i><span>PROJECT_TAG_ACTION_ACTIVATE</span></a>
+              </li>
+              <li><a href="#PROJECT_TAG_ACTION_DEACTIVATE"><i class="alert alert-success"></i><span>PROJECT_TAG_ACTION_DEACTIVATE</span></a>
+              </li>
               <li><a href="#getTagTree"><i class="alert alert-info"></i><span>getTagTree</span></a>
               </li>
               <li><a href="#installTag"><i class="alert alert-info"></i><span>installTag</span></a>
+              </li>
+              <li><a href="#toggleTag"><i class="alert alert-info"></i><span>toggleTag</span></a>
               </li>
             </ul>
           </div>
@@ -111,6 +117,24 @@
           </section>
           <div class="description"> </div>
           <pre><code class="language-javascript">StSDK.PROJECT_TAG_TREE_FORMAT_KENDOUI = 'kendoui';</code></pre>
+          <section id="PROJECT_TAG_ACTION_ACTIVATE">
+            <h1>PROJECT_TAG_ACTION_ACTIVATE</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>StSDK.PROJECT_TAG_ACTION_ACTIVATE</span>
+            </p>
+          </section>
+          <div class="description"> </div>
+          <pre><code class="language-javascript">StSDK.PROJECT_TAG_ACTION_ACTIVATE = 'activate';</code></pre>
+          <section id="PROJECT_TAG_ACTION_DEACTIVATE">
+            <h1>PROJECT_TAG_ACTION_DEACTIVATE</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>StSDK.PROJECT_TAG_ACTION_DEACTIVATE</span>
+            </p>
+          </section>
+          <div class="description"> </div>
+          <pre><code class="language-javascript">StSDK.PROJECT_TAG_ACTION_DEACTIVATE = 'deactivate';</code></pre>
           <section id="getTagTree">
             <h1>getTagTree</h1>
             <h5 class="subheader"></h5>
@@ -221,6 +245,47 @@
     StSDK.validatePlainObj('Tag data', data);
 
     return this.post('projects/' + projectId +'/tags/template/' + tagTemplateId, null, data);
+};</code></pre>
+          <section id="toggleTag">
+            <h1>toggleTag</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.toggleTag()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>The tag ID</p></td>
+              </tr>
+              <tr>
+                <td>action</td>
+                <td>String</td>
+                <td><p>The action on the tag, options being <code>&#39;activate&#39;</code> and <code>&#39;deactivate&#39;</code></p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Activate or deactivate a tag</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.toggleTag = function(id, action) {
+    StSDK.validateInt('Project ID', id);
+    if (!~$.inArray(action, [StSDK.PROJECT_TAG_ACTION_ACTIVATE, StSDK.PROJECT_TAG_ACTION_DEACTIVATE])) {
+        StSDK.error('[Action] is not valid.');
+    }
+
+    if (StSDK.PROJECT_TAG_ACTION_ACTIVATE === action) {
+        return this.put('tags/' + id + '/activate');
+    } else {
+        return this.put('tags/' + id + '/deactivate');
+    }
 };
 }(window, document, jQuery));</code></pre>
         </div>
