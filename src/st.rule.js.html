@@ -73,26 +73,26 @@
           <ul class="nav nav-list bs-docs-sidenav affix-top">
             <li><a href="st.js.html">st.js</a></li>
             <li><a href="st.app.js.html">st.app.js</a></li>
-            <li class="active"><a href="st.company.js.html">st.company.js</a></li>
+            <li><a href="st.company.js.html">st.company.js</a></li>
             <li><a href="st.dataobjects.js.html">st.dataobjects.js</a></li>
             <li><a href="st.helper.js.html">st.helper.js</a></li>
             <li><a href="st.project.js.html">st.project.js</a></li>
-            <li><a href="st.rule.js.html">st.rule.js</a></li>
+            <li class="active"><a href="st.rule.js.html">st.rule.js</a></li>
             <li><a href="st.tag.js.html">st.tag.js</a></li>
           </ul>
           <div class="scrollspy">
             <ul class="nav nav-list bs-docs-sidenav affix-top">
-              <li><a href="#getCompany"><i class="alert alert-info"></i><span>getCompany</span></a>
+              <li><a href="#getProjectRules"><i class="alert alert-info"></i><span>getProjectRules</span></a>
               </li>
             </ul>
           </div>
         </div>
         <div class="span9">
-          <section id="getCompany">
-            <h1>getCompany</h1>
+          <section id="getProjectRules">
+            <h1>getProjectRules</h1>
             <h5 class="subheader"></h5>
             <p>
-              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getCompany()</span>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getProjectRules()</span>
             </p>
           </section>
           <table class="table table-bordered table-striped">
@@ -107,16 +107,17 @@
               <tr>
                 <td>id</td>
                 <td>Number</td>
-                <td><p>The company ID</p></td>
+                <td><p>ID of the project</p></td>
               </tr>
             </tbody>
           </table>
-          <div class="description"><p>Gets the details of a given company</p> </div>
-          <pre><code class="language-javascript">StSDK.prototype.getCompany = function (id) {
-    StSDK.validateInt('Company ID', id);
+          <div class="description"><p>Gets all rules available in the specific project.</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getProjectRules = function(id) {
+    StSDK.validateInt('Project ID', id);
 
-    return this.get('companies/' + id);
+    return this.get('projects/' + id + '/rules');
 };
+
 }(window));</code></pre>
         </div>
       </div>
