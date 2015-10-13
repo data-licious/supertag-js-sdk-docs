@@ -111,13 +111,12 @@
               </tr>
             </tbody>
           </table>
-          <div class="description"><p>Gets all rules available in the specific project.</p> </div>
+          <div class="description"><p>Gets all rules available in the given project</p> </div>
           <pre><code class="language-javascript">StSDK.prototype.getProjectRules = function(id) {
     StSDK.validateInt('Project ID', id);
 
     return this.get('projects/' + id + '/rules');
 };
-
 }(window));</code></pre>
         </div>
       </div>

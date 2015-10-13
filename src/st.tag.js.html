@@ -90,11 +90,19 @@
               </li>
               <li><a href="#PROJECT_TAG_ACTION_DEACTIVATE"><i class="alert alert-success"></i><span>PROJECT_TAG_ACTION_DEACTIVATE</span></a>
               </li>
+              <li><a href="#PROJECT_TAG_MOVE_POSITION_BEFORE"><i class="alert alert-success"></i><span>PROJECT_TAG_MOVE_POSITION_BEFORE</span></a>
+              </li>
+              <li><a href="#PROJECT_TAG_MOVE_POSITION_AFTER"><i class="alert alert-success"></i><span>PROJECT_TAG_MOVE_POSITION_AFTER</span></a>
+              </li>
+              <li><a href="#PROJECT_TAG_MOVE_POSITION_OVER"><i class="alert alert-success"></i><span>PROJECT_TAG_MOVE_POSITION_OVER</span></a>
+              </li>
               <li><a href="#getTagTree"><i class="alert alert-info"></i><span>getTagTree</span></a>
               </li>
               <li><a href="#installTag"><i class="alert alert-info"></i><span>installTag</span></a>
               </li>
               <li><a href="#toggleTag"><i class="alert alert-info"></i><span>toggleTag</span></a>
+              </li>
+              <li><a href="#moveTag"><i class="alert alert-info"></i><span>moveTag</span></a>
               </li>
             </ul>
           </div>
@@ -136,6 +144,33 @@
           </section>
           <div class="description"> </div>
           <pre><code class="language-javascript">StSDK.PROJECT_TAG_ACTION_DEACTIVATE = 'deactivate';</code></pre>
+          <section id="PROJECT_TAG_MOVE_POSITION_BEFORE">
+            <h1>PROJECT_TAG_MOVE_POSITION_BEFORE</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>StSDK.PROJECT_TAG_MOVE_POSITION_BEFORE</span>
+            </p>
+          </section>
+          <div class="description"> </div>
+          <pre><code class="language-javascript">StSDK.PROJECT_TAG_MOVE_POSITION_BEFORE = 'before';</code></pre>
+          <section id="PROJECT_TAG_MOVE_POSITION_AFTER">
+            <h1>PROJECT_TAG_MOVE_POSITION_AFTER</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>StSDK.PROJECT_TAG_MOVE_POSITION_AFTER</span>
+            </p>
+          </section>
+          <div class="description"> </div>
+          <pre><code class="language-javascript">StSDK.PROJECT_TAG_MOVE_POSITION_AFTER = 'after';</code></pre>
+          <section id="PROJECT_TAG_MOVE_POSITION_OVER">
+            <h1>PROJECT_TAG_MOVE_POSITION_OVER</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>StSDK.PROJECT_TAG_MOVE_POSITION_OVER</span>
+            </p>
+          </section>
+          <div class="description"> </div>
+          <pre><code class="language-javascript">StSDK.PROJECT_TAG_MOVE_POSITION_OVER = 'over';</code></pre>
           <section id="getTagTree">
             <h1>getTagTree</h1>
             <h5 class="subheader"></h5>
@@ -169,9 +204,10 @@
     StSDK.validateInt('Project ID', id);
 
     var format = format || StSDK.PROJECT_TAG_TREE_FORMAT_STANDARD;
-    if (!~$.inArray(format, [StSDK.PROJECT_TAG_TREE_FORMAT_STANDARD, StSDK.PROJECT_TAG_TREE_FORMAT_KENDOUI])) {
-        StSDK.error('[Format] is not valid.');
-    }
+    StSDK.validateOpts('Format', format, [
+        StSDK.PROJECT_TAG_TREE_FORMAT_STANDARD,
+        StSDK.PROJECT_TAG_TREE_FORMAT_KENDOUI
+    ]);
 
     return this.get('projects/' + id + '/tags', null, {
         dataFilter: function(data, type) {
@@ -274,18 +310,77 @@
               </tr>
             </tbody>
           </table>
-          <div class="description"><p>Activate or deactivate a tag</p> </div>
+          <div class="description"><p>Activates or deactivates a tag</p> </div>
           <pre><code class="language-javascript">StSDK.prototype.toggleTag = function(id, action) {
     StSDK.validateInt('Project ID', id);
-    if (!~$.inArray(action, [StSDK.PROJECT_TAG_ACTION_ACTIVATE, StSDK.PROJECT_TAG_ACTION_DEACTIVATE])) {
-        StSDK.error('[Action] is not valid.');
-    }
+    StSDK.validateOpts('Action', action, [
+        StSDK.PROJECT_TAG_ACTION_ACTIVATE,
+        StSDK.PROJECT_TAG_ACTION_DEACTIVATE
+    ]);
 
     if (StSDK.PROJECT_TAG_ACTION_ACTIVATE === action) {
         return this.put('tags/' + id + '/activate');
     } else {
         return this.put('tags/' + id + '/deactivate');
     }
+};</code></pre>
+          <section id="moveTag">
+            <h1>moveTag</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.moveTag()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>projectId</td>
+                <td>Number</td>
+                <td><p>The project ID</p></td>
+              </tr>
+              <tr>
+                <td>tagIds</td>
+                <td>Array.&lt;Number&gt;</td>
+                <td><p>An array of the IDs of the tags to move</p></td>
+              </tr>
+              <tr>
+                <td>targetTagId</td>
+                <td>Number</td>
+                <td><p>The target tag ID</p></td>
+              </tr>
+              <tr>
+                <td>position</td>
+                <td>String</td>
+                <td><p>The drop position, options being <code>&#39;before&#39;</code>, <code>&#39;after&#39;</code> and <code>&#39;over&#39;</code></p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Moves a tag</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.moveTag = function(projectId, tagIds, targetTagId, pos) {
+    StSDK.validateInt('Project ID', projectId);
+    StSDK.validateArr('Tag IDs', tagIds, true);
+    for (var i = 0; i &lt; tagIds.length; i++) {
+        StSDK.validateInt('Tag ID', tagIds[i]);
+    }
+    StSDK.validateInt('Target tag ID', targetTagId);
+    StSDK.validateOpts('Position', pos, [
+        StSDK.PROJECT_TAG_MOVE_POSITION_BEFORE,
+        StSDK.PROJECT_TAG_MOVE_POSITION_AFTER,
+        StSDK.PROJECT_TAG_MOVE_POSITION_OVER
+    ]);
+
+    return this.put('projects/' + projectId + '/tags/move', null, {
+        tagIds: tagIds,
+        targetTagId: targetTagId,
+        nodePosition: pos
+    });
 };
 }(window, document, jQuery));</code></pre>
         </div>

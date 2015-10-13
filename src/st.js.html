@@ -96,7 +96,11 @@
               </li>
               <li><a href="#validateStr"><i class="alert alert-success"></i><span>validateStr</span></a>
               </li>
+              <li><a href="#validateArr"><i class="alert alert-success"></i><span>validateArr</span></a>
+              </li>
               <li><a href="#validatePlainObj"><i class="alert alert-success"></i><span>validatePlainObj</span></a>
+              </li>
+              <li><a href="#validateOpts"><i class="alert alert-success"></i><span>validateOpts</span></a>
               </li>
               <li><a href="#get"><i class="alert alert-info"></i><span>get</span></a>
               </li>
@@ -310,6 +314,41 @@
           </table>
           <div class="description"><p>Validates a JS variable to be a string</p> </div>
           <pre><code class="language-javascript">StSDK.validateStr = validateStr;</code></pre>
+          <section id="validateArr">
+            <h1>validateArr</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>StSDK.validateArr</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>name</td>
+                <td>String</td>
+                <td><p>The name of the variable</p></td>
+              </tr>
+              <tr>
+                <td>variable</td>
+                <td></td>
+                <td><p>The variable to validate</p></td>
+              </tr>
+              <tr>
+                <td>notEmpty</td>
+                <td>Boolean</td>
+                <td><p>The flag to specify whether the array cannot be empty</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Validates a JS variable to be an array</p> </div>
+          <pre><code class="language-javascript">StSDK.validateArr = validateArr;</code></pre>
           <section id="validatePlainObj">
             <h1>validatePlainObj</h1>
             <h5 class="subheader"></h5>
@@ -340,6 +379,41 @@
           </table>
           <div class="description"><p>Validates a JS variable to be a plain object</p> </div>
           <pre><code class="language-javascript">StSDK.validatePlainObj = validatePlainObj;</code></pre>
+          <section id="validateOpts">
+            <h1>validateOpts</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>StSDK.validateOpts</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>name</td>
+                <td>String</td>
+                <td><p>The name of the option</p></td>
+              </tr>
+              <tr>
+                <td>opt</td>
+                <td>String</td>
+                <td><p>The value of the option</p></td>
+              </tr>
+              <tr>
+                <td>opts</td>
+                <td>Array.&lt;String&gt;</td>
+                <td><p>An array of the valid options</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Validates a string option to be valid</p> </div>
+          <pre><code class="language-javascript">StSDK.validateOpts = validateOpts;</code></pre>
           <section id="get">
             <h1>get</h1>
             <h5 class="subheader"></h5>
