@@ -84,6 +84,8 @@
             <ul class="nav nav-list bs-docs-sidenav affix-top">
               <li><a href="#getProjectRules"><i class="alert alert-info"></i><span>getProjectRules</span></a>
               </li>
+              <li><a href="#getRuleObjectTypeLabel"><i class="alert alert-info"></i><span>getRuleObjectTypeLabel</span></a>
+              </li>
             </ul>
           </div>
         </div>
@@ -116,7 +118,40 @@
     StSDK.validateInt('Project ID', id);
 
     return this.get('projects/' + id + '/rules');
+};</code></pre>
+          <section id="getRuleObjectTypeLabel">
+            <h1>getRuleObjectTypeLabel</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getRuleObjectTypeLabel()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>data</td>
+                <td>Object</td>
+                <td><p>rule object</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Returns rule human readable label for rule</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getRuleObjectTypeLabel = function(data) {
+    switch (data.type) {
+        case &quot;business_rule&quot;:
+            return &quot;Business rule&quot;;
+    }
+
+    return &quot;&quot;;
 };
+
 }(window));</code></pre>
         </div>
       </div>
