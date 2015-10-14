@@ -73,8 +73,8 @@
           <ul class="nav nav-list bs-docs-sidenav affix-top">
             <li><a href="st.js.html">st.js</a></li>
             <li><a href="st.app.js.html">st.app.js</a></li>
-            <li class="active"><a href="st.company.js.html">st.company.js</a></li>
-            <li><a href="st.dataobject.js.html">st.dataobject.js</a></li>
+            <li><a href="st.company.js.html">st.company.js</a></li>
+            <li class="active"><a href="st.dataobject.js.html">st.dataobject.js</a></li>
             <li><a href="st.helper.js.html">st.helper.js</a></li>
             <li><a href="st.project.js.html">st.project.js</a></li>
             <li><a href="st.rule.js.html">st.rule.js</a></li>
@@ -82,17 +82,19 @@
           </ul>
           <div class="scrollspy">
             <ul class="nav nav-list bs-docs-sidenav affix-top">
-              <li><a href="#getCompany"><i class="alert alert-info"></i><span>getCompany</span></a>
+              <li><a href="#getProjectDataObjects"><i class="alert alert-info"></i><span>getProjectDataObjects</span></a>
+              </li>
+              <li><a href="#getDataObjectTypeLabel"><i class="alert alert-info"></i><span>getDataObjectTypeLabel</span></a>
               </li>
             </ul>
           </div>
         </div>
         <div class="span9">
-          <section id="getCompany">
-            <h1>getCompany</h1>
+          <section id="getProjectDataObjects">
+            <h1>getProjectDataObjects</h1>
             <h5 class="subheader"></h5>
             <p>
-              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getCompany()</span>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getProjectDataObjects()</span>
             </p>
           </section>
           <table class="table table-bordered table-striped">
@@ -107,16 +109,68 @@
               <tr>
                 <td>id</td>
                 <td>Number</td>
-                <td><p>The company ID</p></td>
+                <td><p>ID of the project</p></td>
               </tr>
             </tbody>
           </table>
-          <div class="description"><p>Gets the details of a given company</p> </div>
-          <pre><code class="language-javascript">StSDK.prototype.getCompany = function (id) {
-    StSDK.validateInt('Company ID', id);
+          <div class="description"><p>Gets all data objects available in the specific project</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getProjectDataObjects = function(id) {
+    StSDK.validateInt('Project ID', id);
 
-    return this.get('companies/' + id);
+    return this.get('projects/' + id + '/data-objects');
+};</code></pre>
+          <section id="getDataObjectTypeLabel">
+            <h1>getDataObjectTypeLabel</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getDataObjectTypeLabel()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>data</td>
+                <td>Object</td>
+                <td><p>Data object</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Returns data object human readable label for data object</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getDataObjectTypeLabel = function(data) {
+    switch (data.type) {
+        case &quot;affinity_group_variable&quot;:
+            return &quot;Affinity&quot;;
+        case &quot;cookie_parameter_variable&quot;:
+            return &quot;Cookie&quot;;
+        case &quot;double_click_advertiser_id_variable&quot;:
+            return &quot;DoubleClick Advertiser&quot;;
+        case &quot;element_text_variable&quot;:
+            return &quot;Element text&quot;;
+        case &quot;javascript_variable&quot;:
+        case &quot;special_javascript_value_variable&quot;:
+            return &quot;JavaScript&quot;;
+        case &quot;query_parameter_variable&quot;:
+            return &quot;URL Parameter&quot;;
+        case &quot;string_variable&quot;:
+            return &quot;String&quot;;
+        case &quot;variable_template_variable&quot;:
+            return data.vendor;
+        case &quot;rule_bound_variable&quot;:
+            return &quot;Rule based&quot;;
+        case &quot;referrer_parameter_variable&quot;:
+            return &quot;Referrer parameter&quot;;
+    }
+
+    return &quot;&quot;;
 };
+
 }(window));</code></pre>
         </div>
       </div>

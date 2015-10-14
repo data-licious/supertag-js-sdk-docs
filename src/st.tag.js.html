@@ -74,7 +74,7 @@
             <li><a href="st.js.html">st.js</a></li>
             <li><a href="st.app.js.html">st.app.js</a></li>
             <li><a href="st.company.js.html">st.company.js</a></li>
-            <li><a href="st.dataobjects.js.html">st.dataobjects.js</a></li>
+            <li><a href="st.dataobject.js.html">st.dataobject.js</a></li>
             <li><a href="st.helper.js.html">st.helper.js</a></li>
             <li><a href="st.project.js.html">st.project.js</a></li>
             <li><a href="st.rule.js.html">st.rule.js</a></li>
@@ -99,6 +99,8 @@
               <li><a href="#getTagTree"><i class="alert alert-info"></i><span>getTagTree</span></a>
               </li>
               <li><a href="#installTag"><i class="alert alert-info"></i><span>installTag</span></a>
+              </li>
+              <li><a href="#deleteTag"><i class="alert alert-info"></i><span>deleteTag</span></a>
               </li>
               <li><a href="#toggleTag"><i class="alert alert-info"></i><span>toggleTag</span></a>
               </li>
@@ -281,6 +283,35 @@
     StSDK.validatePlainObj('Tag data', data);
 
     return this.post('projects/' + projectId +'/tags/template/' + tagTemplateId, null, data);
+};</code></pre>
+          <section id="deleteTag">
+            <h1>deleteTag</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.deleteTag()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>The tag ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Deletes a tag</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.deleteTag = function(id) {
+    StSDK.validateInt('Tag ID', id);
+
+    return this.delete('tags/' + id);
 };</code></pre>
           <section id="toggleTag">
             <h1>toggleTag</h1>
