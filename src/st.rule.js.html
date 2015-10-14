@@ -86,6 +86,8 @@
               </li>
               <li><a href="#getRuleObjectTypeLabel"><i class="alert alert-info"></i><span>getRuleObjectTypeLabel</span></a>
               </li>
+              <li><a href="#getRuleOperatorLabel"><i class="alert alert-info"></i><span>getRuleOperatorLabel</span></a>
+              </li>
             </ul>
           </div>
         </div>
@@ -149,6 +151,58 @@
             return &quot;Business rule&quot;;
         case &quot;event&quot;:
             return &quot;Event&quot;;
+    }
+
+    return &quot;&quot;;
+};</code></pre>
+          <section id="getRuleOperatorLabel">
+            <h1>getRuleOperatorLabel</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getRuleOperatorLabel()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>data</td>
+                <td>Object</td>
+                <td><p>rule object</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Returns rule human readable label for rule operator</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getRuleOperatorLabel = function(operatorName) {
+    switch (operatorName) {
+        case &quot;contains&quot;:
+            return &quot;Contains&quot;;
+        case &quot;ends_with&quot;:
+            return &quot;Ends with&quot;;
+        case &quot;equal&quot;:
+            return &quot;Equal&quot;;
+        case &quot;greater_than&quot;:
+            return &quot;Greater than&quot;;
+        case &quot;less_than&quot;:
+            return &quot;Less than&quot;;
+        case &quot;logical_and&quot;:
+            return &quot;Logical and&quot;;
+        case &quot;logical_or&quot;:
+            return &quot;Logical or&quot;;
+        case &quot;not_contains&quot;:
+            return &quot;Not contains&quot;;
+        case &quot;not_equal&quot;:
+            return &quot;Not equal&quot;;
+        case &quot;regex_match&quot;:
+            return &quot;Regex match&quot;;
+        case &quot;starts_with&quot;:
+            return &quot;Starts with&quot;;
     }
 
     return &quot;&quot;;
