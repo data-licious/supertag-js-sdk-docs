@@ -96,6 +96,8 @@
               </li>
               <li><a href="#PROJECT_TAG_MOVE_POSITION_OVER"><i class="alert alert-success"></i><span>PROJECT_TAG_MOVE_POSITION_OVER</span></a>
               </li>
+              <li><a href="#saveTagInstall"><i class="alert alert-info"></i><span>saveTagInstall</span></a>
+              </li>
               <li><a href="#getTagTree"><i class="alert alert-info"></i><span>getTagTree</span></a>
               </li>
               <li><a href="#installTag"><i class="alert alert-info"></i><span>installTag</span></a>
@@ -173,6 +175,45 @@
           </section>
           <div class="description"> </div>
           <pre><code class="language-javascript">StSDK.PROJECT_TAG_MOVE_POSITION_OVER = 'over';</code></pre>
+          <section id="saveTagInstall">
+            <h1>saveTagInstall</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.saveTagInstall()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>projectId</td>
+                <td>Number</td>
+                <td><p>Project Id</p></td>
+              </tr>
+              <tr>
+                <td>tagId</td>
+                <td>Number</td>
+                <td><p>Tag template Id</p></td>
+              </tr>
+              <tr>
+                <td>payload</td>
+                <td>Object</td>
+                <td><p>Object payload</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Saves Tag Install form</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.saveTagInstall = function(projectId, tagId, payload) {
+    StSDK.validateInt('Project Id', projectId);
+    StSDK.validateInt('Tagt Id', tagId);
+    return this.post('projects/' + projectId + '/tags/template/' + tagId, null, payload);
+}</code></pre>
           <section id="getTagTree">
             <h1>getTagTree</h1>
             <h5 class="subheader"></h5>
