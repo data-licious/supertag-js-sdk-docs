@@ -88,6 +88,8 @@
               </li>
               <li><a href="#getRuleOperatorLabel"><i class="alert alert-info"></i><span>getRuleOperatorLabel</span></a>
               </li>
+              <li><a href="#getRuleConditionLabel"><i class="alert alert-info"></i><span>getRuleConditionLabel</span></a>
+              </li>
             </ul>
           </div>
         </div>
@@ -172,14 +174,48 @@
             </thead>
             <tbody>
               <tr>
-                <td>data</td>
-                <td>Object</td>
-                <td><p>rule object</p></td>
+                <td>rule</td>
+                <td></td>
+                <td><p>operator</p></td>
               </tr>
             </tbody>
           </table>
-          <div class="description"><p>Returns rule human readable label for rule operator</p> </div>
+          <div class="description"><p>Returns human readable label for rule operator</p> </div>
           <pre><code class="language-javascript">StSDK.prototype.getRuleOperatorLabel = function(operatorName) {
+    switch (operatorName) {
+        case &quot;logical_and&quot;:
+            return &quot;And&quot;;
+        case &quot;logical_or&quot;:
+            return &quot;Or&quot;;
+    }
+
+    return &quot;&quot;;
+};</code></pre>
+          <section id="getRuleConditionLabel">
+            <h1>getRuleConditionLabel</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getRuleConditionLabel()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>rule</td>
+                <td></td>
+                <td><p>condition operator</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Returns rule human readable label for rule condition operator</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getRuleConditionLabel = function(operatorName) {
     switch (operatorName) {
         case &quot;contains&quot;:
             return &quot;Contains&quot;;
@@ -191,10 +227,6 @@
             return &quot;Greater than&quot;;
         case &quot;less_than&quot;:
             return &quot;Less than&quot;;
-        case &quot;logical_and&quot;:
-            return &quot;Logical and&quot;;
-        case &quot;logical_or&quot;:
-            return &quot;Logical or&quot;;
         case &quot;not_contains&quot;:
             return &quot;Not contains&quot;;
         case &quot;not_equal&quot;:
