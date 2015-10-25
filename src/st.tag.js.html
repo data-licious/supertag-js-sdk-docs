@@ -208,12 +208,12 @@
               </tr>
             </tbody>
           </table>
-          <div class="description"><p>Save Tag Template information</p> </div>
+          <div class="description"><p>Saves Tag Template information</p> </div>
           <pre><code class="language-javascript">StSDK.prototype.saveTagInstall = function(projectId, tagId, payload) {
     StSDK.validateInt('Project Id', projectId);
     StSDK.validateInt('Tagt Id', tagId);
     return this.post('projects/' + projectId + '/tags/template/' + tagId, null, payload);
-}</code></pre>
+};</code></pre>
           <section id="getTagTree">
             <h1>getTagTree</h1>
             <h5 class="subheader"></h5>
