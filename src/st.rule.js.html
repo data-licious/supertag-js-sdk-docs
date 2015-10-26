@@ -82,20 +82,57 @@
           </ul>
           <div class="scrollspy">
             <ul class="nav nav-list bs-docs-sidenav affix-top">
+              <li><a href="#getDataObjectList"><i class="alert alert-info"></i><span>getDataObjectList</span></a>
+              </li>
               <li><a href="#getProjectRules"><i class="alert alert-info"></i><span>getProjectRules</span></a>
               </li>
               <li><a href="#updateRule"><i class="alert alert-info"></i><span>updateRule</span></a>
               </li>
-              <li><a href="#getRuleObjectTypeLabel"><i class="alert alert-info"></i><span>getRuleObjectTypeLabel</span></a>
+              <li><a href="#getRuleTypeLabel"><i class="alert alert-info"></i><span>getRuleTypeLabel</span></a>
               </li>
               <li><a href="#getRuleOperatorLabel"><i class="alert alert-info"></i><span>getRuleOperatorLabel</span></a>
               </li>
               <li><a href="#getRuleConditionLabel"><i class="alert alert-info"></i><span>getRuleConditionLabel</span></a>
               </li>
+              <li><a href="#getRuleTypeList"><i class="alert alert-info"></i><span>getRuleTypeList</span></a>
+              </li>
+              <li><a href="#getConditionLogicalOperatorList"><i class="alert alert-info"></i><span>getConditionLogicalOperatorList</span></a>
+              </li>
+              <li><a href="#getConditionOperatorList"><i class="alert alert-info"></i><span>getConditionOperatorList</span></a>
+              </li>
             </ul>
           </div>
         </div>
         <div class="span9">
+          <section id="getDataObjectList">
+            <h1>getDataObjectList</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getDataObjectList()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>ID of the project</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Gets all dataObjects available in the given project</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getDataObjectList = function(id) {
+    StSDK.validateInt('Project ID', id);
+
+    return this.get('projects/' + id + '/data-object-list');
+};</code></pre>
           <section id="getProjectRules">
             <h1>getProjectRules</h1>
             <h5 class="subheader"></h5>
@@ -167,11 +204,11 @@
         'event_name': data.event_name,
     });
 };</code></pre>
-          <section id="getRuleObjectTypeLabel">
-            <h1>getRuleObjectTypeLabel</h1>
+          <section id="getRuleTypeLabel">
+            <h1>getRuleTypeLabel</h1>
             <h5 class="subheader"></h5>
             <p>
-              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getRuleObjectTypeLabel()</span>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getRuleTypeLabel()</span>
             </p>
           </section>
           <table class="table table-bordered table-striped">
@@ -191,8 +228,8 @@
             </tbody>
           </table>
           <div class="description"><p>Returns rule human readable label for rule</p> </div>
-          <pre><code class="language-javascript">StSDK.prototype.getRuleObjectTypeLabel = function(data) {
-    switch (data.type) {
+          <pre><code class="language-javascript">StSDK.prototype.getRuleTypeLabel = function(data) {
+    switch (data) {
         case &quot;business_rule&quot;:
             return &quot;Business rule&quot;;
         case &quot;event&quot;:
@@ -282,6 +319,49 @@
     }
 
     return &quot;&quot;;
+};</code></pre>
+          <section id="getRuleTypeList">
+            <h1>getRuleTypeList</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getRuleTypeList()</span>
+            </p>
+          </section>
+          <div class="description"><p>Returns rule type list</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getRuleTypeList = function() {
+    return ['business_rule', 'event'];
+};</code></pre>
+          <section id="getConditionLogicalOperatorList">
+            <h1>getConditionLogicalOperatorList</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getConditionLogicalOperatorList()</span>
+            </p>
+          </section>
+          <div class="description"><p>Returns rule condition logical operator list</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getConditionLogicalOperatorList = function() {
+    return ['logical_and', 'logical_or'];
+};</code></pre>
+          <section id="getConditionOperatorList">
+            <h1>getConditionOperatorList</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getConditionOperatorList()</span>
+            </p>
+          </section>
+          <div class="description"><p>Returns rule condition operator list</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getConditionOperatorList = function() {
+    return [
+            &quot;contains&quot;,
+            &quot;ends_with&quot;,
+            &quot;equal&quot;,
+            &quot;greater_than&quot;,
+            &quot;less_than&quot;,
+            &quot;not_contains&quot;,
+            &quot;not_equal&quot;,
+            &quot;regex_match&quot;,
+            &quot;starts_with&quot;
+        ];
 };
 
 }(window));</code></pre>
