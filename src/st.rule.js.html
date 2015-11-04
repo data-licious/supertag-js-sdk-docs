@@ -102,6 +102,10 @@
               </li>
               <li><a href="#getConditionOperatorList"><i class="alert alert-info"></i><span>getConditionOperatorList</span></a>
               </li>
+              <li><a href="#getEventTypeList"><i class="alert alert-info"></i><span>getEventTypeList</span></a>
+              </li>
+              <li><a href="#getEventTypeName"><i class="alert alert-info"></i><span>getEventTypeName</span></a>
+              </li>
             </ul>
           </div>
         </div>
@@ -141,7 +145,7 @@
     var ruleObj = {
         'name': data.name,
         'description': data.description,
-        'type': data.type,
+        'type': data.type
     };
     if ('event' == data.type) {
         ruleObj.selector = data.selector;
@@ -417,7 +421,77 @@
             &quot;regex_match&quot;,
             &quot;starts_with&quot;
         ];
+};</code></pre>
+          <section id="getEventTypeList">
+            <h1>getEventTypeList</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getEventTypeList()</span>
+            </p>
+          </section>
+          <div class="description"><p>Returns rule(Event) type list</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getEventTypeList = function() {
+    return [
+            'click',
+            'dblclick',
+            'focus',
+            'blur',
+            'mouseup',
+            'mousedown',
+            'load',
+            'submit',
+            'change'
+        ];
+};</code></pre>
+          <section id="getEventTypeName">
+            <h1>getEventTypeName</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getEventTypeName()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>typeName</td>
+                <td>String</td>
+                <td><p>rule type</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Returns rule(Event) human readable type</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getEventTypeName = function(typeName) {
+    switch (typeName) {
+        case 'click':
+            return 'Click';
+        case 'dblclick':
+            return 'Double Click';
+        case 'focus':
+            return 'Focus';
+        case 'blur':
+            return 'Blur';
+        case 'mouseup':
+            return 'Mouse Up';
+        case 'mousedown':
+            return 'Mouse Down';
+        case 'load':
+            return 'Load';
+        case 'submit':
+            return 'Submit';
+        case 'change':
+            return 'Change';
+    }
+
+    return &quot;&quot;;
 };
+
 
 }(window));</code></pre>
         </div>
