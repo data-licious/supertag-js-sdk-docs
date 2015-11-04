@@ -84,6 +84,8 @@
             <ul class="nav nav-list bs-docs-sidenav affix-top">
               <li><a href="#getProjectDataObjects"><i class="alert alert-info"></i><span>getProjectDataObjects</span></a>
               </li>
+              <li><a href="#addProjectDataObject"><i class="alert alert-info"></i><span>addProjectDataObject</span></a>
+              </li>
               <li><a href="#getDataObjectTypeLabel"><i class="alert alert-info"></i><span>getDataObjectTypeLabel</span></a>
               </li>
             </ul>
@@ -118,6 +120,38 @@
     StSDK.validateInt('Project ID', id);
 
     return this.get('projects/' + id + '/data-objects');
+};</code></pre>
+          <section id="addProjectDataObject">
+            <h1>addProjectDataObject</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.addProjectDataObject()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>projectId</td>
+                <td>Number</td>
+                <td><p>Project Id</p></td>
+              </tr>
+              <tr>
+                <td>oPayload</td>
+                <td>Object</td>
+                <td><p>Payload data object</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Add new Data Object to a Project</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.addProjectDataObject = function(projectId, oPayload) {
+    return this.post('projects/'+ projectId + '/data-objects', null, oPayload);
 };</code></pre>
           <section id="getDataObjectTypeLabel">
             <h1>getDataObjectTypeLabel</h1>
