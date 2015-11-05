@@ -184,7 +184,7 @@
           <pre><code class="language-javascript">StSDK.prototype.getDataObjectList = function(id) {
     StSDK.validateInt('Project ID', id);
 
-    return this.get('projects/' + id + '/data-object-list');
+    return this.get('projects/' + id + '/data-objects?simple=1');
 };</code></pre>
           <section id="getProjectRules">
             <h1>getProjectRules</h1>
