@@ -82,6 +82,12 @@
           </ul>
           <div class="scrollspy">
             <ul class="nav nav-list bs-docs-sidenav affix-top">
+              <li><a href="#PROJECT_APP_FORMAT_FLAT"><i class="alert alert-success"></i><span>PROJECT_APP_FORMAT_FLAT</span></a>
+              </li>
+              <li><a href="#PROJECT_APP_FORMAT_GROUPED_WITH_PLATFORM"><i class="alert alert-success"></i><span>PROJECT_APP_FORMAT_GROUPED_WITH_PLATFORM</span></a>
+              </li>
+              <li><a href="#PROJECT_APP_FORMAT_STANDARD_WITH_PLATFORM"><i class="alert alert-success"></i><span>PROJECT_APP_FORMAT_STANDARD_WITH_PLATFORM</span></a>
+              </li>
               <li><a href="#getCompaniesAndProjects"><i class="alert alert-info"></i><span>getCompaniesAndProjects</span></a>
               </li>
               <li><a href="#getProject"><i class="alert alert-info"></i><span>getProject</span></a>
@@ -90,10 +96,39 @@
               </li>
               <li><a href="#getProjectReleaseNotes"><i class="alert alert-info"></i><span>getProjectReleaseNotes</span></a>
               </li>
+              <li><a href="#getProjectApplications"><i class="alert alert-info"></i><span>getProjectApplications</span></a>
+              </li>
             </ul>
           </div>
         </div>
         <div class="span9">
+          <section id="PROJECT_APP_FORMAT_FLAT">
+            <h1>PROJECT_APP_FORMAT_FLAT</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>StSDK.PROJECT_APP_FORMAT_FLAT</span>
+            </p>
+          </section>
+          <div class="description"> </div>
+          <pre><code class="language-javascript">StSDK.PROJECT_APP_FORMAT_FLAT = 'flat';</code></pre>
+          <section id="PROJECT_APP_FORMAT_GROUPED_WITH_PLATFORM">
+            <h1>PROJECT_APP_FORMAT_GROUPED_WITH_PLATFORM</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>StSDK.PROJECT_APP_FORMAT_GROUPED_WITH_PLATFORM</span>
+            </p>
+          </section>
+          <div class="description"> </div>
+          <pre><code class="language-javascript">StSDK.PROJECT_APP_FORMAT_GROUPED_WITH_PLATFORM = 'grouped_with_platform';</code></pre>
+          <section id="PROJECT_APP_FORMAT_STANDARD_WITH_PLATFORM">
+            <h1>PROJECT_APP_FORMAT_STANDARD_WITH_PLATFORM</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>StSDK.PROJECT_APP_FORMAT_STANDARD_WITH_PLATFORM</span>
+            </p>
+          </section>
+          <div class="description"> </div>
+          <pre><code class="language-javascript">StSDK.PROJECT_APP_FORMAT_STANDARD_WITH_PLATFORM = 'standard_with_platform';</code></pre>
           <section id="getCompaniesAndProjects">
             <h1>getCompaniesAndProjects</h1>
             <h5 class="subheader"></h5>
@@ -183,10 +218,10 @@
               </tr>
             </tbody>
           </table>
-          <div class="description"><p>Gets Project deployment history data based on Project Id</p> </div>
+          <div class="description"><p>Gets the deployment history for a given project</p> </div>
           <pre><code class="language-javascript">StSDK.prototype.getProjectDeployHistory = function(id) {
     StSDK.validateInt('Project ID', id);
-    return this.get('projects/' + id + '/deployments');        
+    return this.get('projects/' + id + '/deployments');
 };</code></pre>
           <section id="getProjectReleaseNotes">
             <h1>getProjectReleaseNotes</h1>
@@ -211,10 +246,83 @@
               </tr>
             </tbody>
           </table>
-          <div class="description"><p>Retrieves Project Release notes prior to deployement (requires Admin role)</p> </div>
+          <div class="description"><p>Gets the release notes for a given project</p> </div>
           <pre><code class="language-javascript">StSDK.prototype.getProjectReleaseNotes = function(id) {
     StSDK.validateInt('Project ID', id);
     return this.get('projects/' + id + '/release-notes');
+};</code></pre>
+          <section id="getProjectApplications">
+            <h1>getProjectApplications</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getProjectApplications()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>The project ID</p></td>
+              </tr>
+              <tr>
+                <td>format</td>
+                <td>String</td>
+                <td><p>The format of the response, options are <code>&#39;flat&#39;</code>, <code>&#39;grouped_with_platform&#39;</code> or <code>&#39;standard_with_platform&#39;</code></p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Gets the applications installed in a given project</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getProjectApplications = function(id, format) {
+    var format = format || StSDK.PROJECT_APP_FORMAT_FLAT;
+    StSDK.validateInt('Project ID', id);
+    StSDK.validateOpts('Format', format, [
+        StSDK.PROJECT_APP_FORMAT_FLAT,
+        StSDK.PROJECT_APP_FORMAT_GROUPED_WITH_PLATFORM,
+        StSDK.PROJECT_APP_FORMAT_STANDARD_WITH_PLATFORM
+    ]);
+
+    return this.get('projects/' + id + '/apps', null, {
+        dataFilter: function(data, type) {
+            if (StSDK.PROJECT_APP_FORMAT_FLAT === format || 'json' !== type) {
+                return data;
+            }
+
+            var grouped = {},
+                standard = [],
+                apps = StSDK.jsonDecode(data);
+
+            $.each(apps, function(k, app) {
+                var platform = app.platform;
+
+                if (!(platform in grouped)) {
+                    grouped[platform] = [app]
+                } else {
+                    grouped[platform].push(app);
+                }
+            });
+
+            if (StSDK.PROJECT_APP_FORMAT_GROUPED_WITH_PLATFORM === format) {
+                return StSDK.jsonEncode(grouped);
+            }
+
+            $.each(grouped, function(platformName, apps) {
+                standard.push({
+                    platform: platformName,
+                    applications: apps
+                });
+            });
+
+            return StSDK.jsonEncode(standard);
+        }
+    });
 };
 }(window));</code></pre>
         </div>
