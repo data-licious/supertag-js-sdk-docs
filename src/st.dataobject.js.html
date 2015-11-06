@@ -84,7 +84,7 @@
             <ul class="nav nav-list bs-docs-sidenav affix-top">
               <li><a href="#getProjectDataObjects"><i class="alert alert-info"></i><span>getProjectDataObjects</span></a>
               </li>
-              <li><a href="#addProjectDataObject"><i class="alert alert-info"></i><span>addProjectDataObject</span></a>
+              <li><a href="#createDataObject"><i class="alert alert-info"></i><span>createDataObject</span></a>
               </li>
               <li><a href="#getDataObjectTypeLabel"><i class="alert alert-info"></i><span>getDataObjectTypeLabel</span></a>
               </li>
@@ -121,11 +121,11 @@
 
     return this.get('projects/' + id + '/data-objects');
 };</code></pre>
-          <section id="addProjectDataObject">
-            <h1>addProjectDataObject</h1>
+          <section id="createDataObject">
+            <h1>createDataObject</h1>
             <h5 class="subheader"></h5>
             <p>
-              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.addProjectDataObject()</span>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.createDataObject()</span>
             </p>
           </section>
           <table class="table table-bordered table-striped">
@@ -140,18 +140,65 @@
               <tr>
                 <td>projectId</td>
                 <td>Number</td>
-                <td><p>Project Id</p></td>
+                <td><p>ID of the project</p></td>
               </tr>
               <tr>
-                <td>oPayload</td>
+                <td>data</td>
                 <td>Object</td>
                 <td><p>Payload data object</p></td>
               </tr>
             </tbody>
           </table>
           <div class="description"><p>Add new Data Object to a Project</p> </div>
-          <pre><code class="language-javascript">StSDK.prototype.addProjectDataObject = function(projectId, oPayload) {
-    return this.post('projects/'+ projectId + '/data-objects', null, oPayload);
+          <pre><code class="language-javascript">StSDK.prototype.createDataObject = function(projectId, data) {
+    var field;
+
+    switch (data.type) {
+
+        case &quot;cookie_parameter_variable&quot;:
+            field = 'cookie_name';
+            break;
+
+        case &quot;element_text_variable&quot;:
+            field = 'element_selector';
+            break;
+
+        case &quot;javascript_variable&quot;:
+        case &quot;special_javascript_value_variable&quot;:
+            field = &quot;variable_name&quot;;
+            break;
+
+        case &quot;query_parameter_variable&quot;:
+            field = &quot;query_string_key&quot;;
+            break;
+
+        case &quot;double_click_advertiser_id_variable&quot;:
+        case &quot;string_variable&quot;:
+            field = &quot;value&quot;;
+            break;
+
+        case &quot;referrer_parameter_variable&quot;:
+            field = 'referrer_parameter_key';
+            break;
+
+        case &quot;variable_template_variable&quot;:
+            //field = &quot;parameter_value&quot;;
+            throw &quot;Not implemented&quot;;
+
+        case &quot;affinity_group_variable&quot;:
+            throw &quot;Not implemented&quot;;
+
+        case &quot;rule_bound_variable&quot;:
+            throw &quot;Not implemented&quot;;
+
+        default:
+            throw 'Undefined type';
+    }
+
+    data[field] = data.value;
+    delete data.value;
+
+    return this.post('projects/'+ projectId + '/data-objects', null, data);
 };</code></pre>
           <section id="getDataObjectTypeLabel">
             <h1>getDataObjectTypeLabel</h1>
