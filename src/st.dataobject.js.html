@@ -90,6 +90,8 @@
               </li>
               <li><a href="#getDataObjectTypeLabel"><i class="alert alert-info"></i><span>getDataObjectTypeLabel</span></a>
               </li>
+              <li><a href="#getDataObjectTypeInformation"><i class="alert alert-success"></i><span>getDataObjectTypeInformation</span></a>
+              </li>
             </ul>
           </div>
         </div>
@@ -269,7 +271,32 @@
     }
 
     return &quot;&quot;;
-};
+};</code></pre>
+          <section id="getDataObjectTypeInformation">
+            <h1>getDataObjectTypeInformation</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>StSDK.prototype.getDataObjectTypeInformation</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>type</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Returns information about data object type</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getDataObjectTypeInformation = _getDataObjectTypeInformation;
 
 function _getFieldNameByType(type) {
     switch (type) {
@@ -296,6 +323,54 @@ function _getFieldNameByType(type) {
         default:
             throw 'Undefined type';
     }
+}
+
+function _getDataObjectTypeInformation(type) {
+    var dataObjectTypes = [
+        {
+            type: &quot;javascript_variable&quot;,
+            name: &quot;JavaScript&quot;,
+            paramName: &quot;Javascript Code&quot;
+        },
+        {
+            type: &quot;query_parameter_variable&quot;,
+            name: &quot;Query parameter&quot;,
+            paramName: &quot;Parameter Name&quot;
+        },
+        {
+            type: &quot;cookie_parameter_variable&quot;,
+            name: &quot;Cookie parameter&quot;,
+            paramName: &quot;Cookie Name&quot;
+        },
+        {
+            type: &quot;element_text_variable&quot;,
+            name: &quot;Element text&quot;,
+            paramName: &quot;Element Selector&quot;
+        },
+        {
+            type: &quot;string_variable&quot;,
+            name: &quot;String&quot;,
+            paramName: &quot;String&quot;
+        },
+        {
+            type: &quot;referrer_parameter_variable&quot;,
+            name: &quot;Referrer parameter&quot;,
+            paramName: &quot;Parameter Name&quot;
+        },
+        {
+            type: &quot;double_click_advertiser_id_variable&quot;,
+            name: &quot;Advertiser ID&quot;,
+            paramName: &quot;Advertiser ID&quot;
+        }
+    ];
+
+    var res = $.grep(dataObjectTypes, function (entry) {
+        return entry.type == type;
+    });
+
+    if (!res.length) throw &quot;Undefined type&quot;;
+
+    return res[0];
 }
 
 }(window));</code></pre>
