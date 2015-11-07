@@ -88,11 +88,11 @@
               </li>
               <li><a href="#APP_TEMPLATE_FORMAT_GROUPED_APP_ONLY"><i class="alert alert-success"></i><span>APP_TEMPLATE_FORMAT_GROUPED_APP_ONLY</span></a>
               </li>
+              <li><a href="#APP_TEMPLATE_FORMAT_GROUPED_VENDOR_ONLY"><i class="alert alert-success"></i><span>APP_TEMPLATE_FORMAT_GROUPED_VENDOR_ONLY</span></a>
+              </li>
               <li><a href="#APP_TEMPLATE_FORMAT_STANDARD"><i class="alert alert-success"></i><span>APP_TEMPLATE_FORMAT_STANDARD</span></a>
               </li>
-              <li><a href="#APP_TEMPLATE_FORMAT_VENDOR_ONLY_GROUPED"><i class="alert alert-success"></i><span>APP_TEMPLATE_FORMAT_VENDOR_ONLY_GROUPED</span></a>
-              </li>
-              <li><a href="#APP_TEMPLATE_FORMAT_VENDOR_ONLY_STANDARD"><i class="alert alert-success"></i><span>APP_TEMPLATE_FORMAT_VENDOR_ONLY_STANDARD</span></a>
+              <li><a href="#APP_TEMPLATE_FORMAT_STANDARD_VENDOR_ONLY"><i class="alert alert-success"></i><span>APP_TEMPLATE_FORMAT_STANDARD_VENDOR_ONLY</span></a>
               </li>
               <li><a href="#getAppTemplate"><i class="alert alert-info"></i><span>getAppTemplate</span></a>
               </li>
@@ -135,6 +135,15 @@
           </section>
           <div class="description"> </div>
           <pre><code class="language-javascript">StSDK.APP_TEMPLATE_FORMAT_GROUPED_APP_ONLY = 'grouped_app_only';</code></pre>
+          <section id="APP_TEMPLATE_FORMAT_GROUPED_VENDOR_ONLY">
+            <h1>APP_TEMPLATE_FORMAT_GROUPED_VENDOR_ONLY</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>StSDK.APP_TEMPLATE_FORMAT_GROUPED_VENDOR_ONLY</span>
+            </p>
+          </section>
+          <div class="description"> </div>
+          <pre><code class="language-javascript">StSDK.APP_TEMPLATE_FORMAT_GROUPED_VENDOR_ONLY = 'grouped_vendor_only';</code></pre>
           <section id="APP_TEMPLATE_FORMAT_STANDARD">
             <h1>APP_TEMPLATE_FORMAT_STANDARD</h1>
             <h5 class="subheader"></h5>
@@ -144,24 +153,15 @@
           </section>
           <div class="description"> </div>
           <pre><code class="language-javascript">StSDK.APP_TEMPLATE_FORMAT_STANDARD = 'standard';</code></pre>
-          <section id="APP_TEMPLATE_FORMAT_VENDOR_ONLY_GROUPED">
-            <h1>APP_TEMPLATE_FORMAT_VENDOR_ONLY_GROUPED</h1>
+          <section id="APP_TEMPLATE_FORMAT_STANDARD_VENDOR_ONLY">
+            <h1>APP_TEMPLATE_FORMAT_STANDARD_VENDOR_ONLY</h1>
             <h5 class="subheader"></h5>
             <p>
-              <div class="label label-success radius ctx-type">property</div><span>StSDK.APP_TEMPLATE_FORMAT_VENDOR_ONLY_GROUPED</span>
+              <div class="label label-success radius ctx-type">property</div><span>StSDK.APP_TEMPLATE_FORMAT_STANDARD_VENDOR_ONLY</span>
             </p>
           </section>
           <div class="description"> </div>
-          <pre><code class="language-javascript">StSDK.APP_TEMPLATE_FORMAT_VENDOR_ONLY_GROUPED = 'vendor_only_grouped';</code></pre>
-          <section id="APP_TEMPLATE_FORMAT_VENDOR_ONLY_STANDARD">
-            <h1>APP_TEMPLATE_FORMAT_VENDOR_ONLY_STANDARD</h1>
-            <h5 class="subheader"></h5>
-            <p>
-              <div class="label label-success radius ctx-type">property</div><span>StSDK.APP_TEMPLATE_FORMAT_VENDOR_ONLY_STANDARD</span>
-            </p>
-          </section>
-          <div class="description"> </div>
-          <pre><code class="language-javascript">StSDK.APP_TEMPLATE_FORMAT_VENDOR_ONLY_STANDARD = 'vendor_only_standard';</code></pre>
+          <pre><code class="language-javascript">StSDK.APP_TEMPLATE_FORMAT_STANDARD_VENDOR_ONLY = 'standard_vendor_only';</code></pre>
           <section id="getAppTemplate">
             <h1>getAppTemplate</h1>
             <h5 class="subheader"></h5>
@@ -303,7 +303,7 @@
               <tr>
                 <td>format</td>
                 <td>String</td>
-                <td><p>The format of the response, options being <code>&#39;flat&#39;</code> (default), <code>&#39;grouped&#39;</code>, <code>&#39;grouped_app_only&#39;</code>, <code>&#39;vendor_only_grouped&#39;</code>, <code>&#39;vendor_only_standard&#39;</code> or <code>&#39;standard&#39;</code></p></td>
+                <td><p>The format of the response, options being <code>&#39;flat&#39;</code> (default), <code>&#39;grouped&#39;</code>, <code>&#39;grouped_app_only&#39;</code>, <code>&#39;grouped_vendor_only&#39;</code>, <code>&#39;standard&#39;</code> or <code>&#39;standard_vendor_only&#39;</code></p></td>
               </tr>
             </tbody>
           </table>
@@ -434,9 +434,9 @@
         StSDK.APP_TEMPLATE_FORMAT_FLAT,
         StSDK.APP_TEMPLATE_FORMAT_GROUPED,
         StSDK.APP_TEMPLATE_FORMAT_GROUPED_APP_ONLY,
+        StSDK.APP_TEMPLATE_FORMAT_GROUPED_VENDOR_ONLY,
         StSDK.APP_TEMPLATE_FORMAT_STANDARD,
-        StSDK.APP_TEMPLATE_FORMAT_VENDOR_ONLY_GROUPED,
-        StSDK.APP_TEMPLATE_FORMAT_VENDOR_ONLY_STANDARD
+        StSDK.APP_TEMPLATE_FORMAT_STANDARD_VENDOR_ONLY
     ]);
 
     return this.get('app-templates', null, {
@@ -447,9 +447,9 @@
 
             var grouped = {},
                 groupedAppOnly = {},
+                groupedVendorOnly = {},
                 standard = [],
-                vendorOnlyGrouped = {},
-                vendorOnlyStandard = [],
+                standardVendorOnly = [],
                 apps = StSDK.jsonDecode(data);
 
             $.each(apps, function(k, app) {
@@ -467,10 +467,10 @@
                     grouped[vendor][platform].push(app);
                 }
 
-                if (!(vendor in vendorOnlyGrouped)) {
-                    vendorOnlyGrouped[vendor] = [app];
+                if (!(vendor in groupedVendorOnly)) {
+                    groupedVendorOnly[vendor] = [app];
                 } else {
-                    vendorOnlyGrouped[vendor].push(app);
+                    groupedVendorOnly[vendor].push(app);
                 }
 
                 $.each(app['tag_templates'], function(j, tag) {
@@ -491,8 +491,8 @@
                 return StSDK.jsonEncode(grouped);
             } else if (StSDK.APP_TEMPLATE_FORMAT_GROUPED_APP_ONLY === format) {
                 return StSDK.jsonEncode(groupedAppOnly);
-            } else if (StSDK.APP_TEMPLATE_FORMAT_VENDOR_ONLY_GROUPED === format) {
-                return StSDK.jsonEncode(vendorOnlyGrouped);
+            } else if (StSDK.APP_TEMPLATE_FORMAT_GROUPED_VENDOR_ONLY === format) {
+                return StSDK.jsonEncode(groupedVendorOnly);
             }
 
             if (StSDK.APP_TEMPLATE_FORMAT_STANDARD === format) {
@@ -513,14 +513,14 @@
                 return StSDK.jsonEncode(standard);
             }
 
-            $.each(vendorOnlyGrouped, function(vendorName, apps) {
-                vendorOnlyStandard.push({
+            $.each(groupedVendorOnly, function(vendorName, apps) {
+                standardVendorOnly.push({
                     vendor: vendorName,
                     applications: apps
                 });
             });
 
-            return StSDK.jsonEncode(vendorOnlyStandard);
+            return StSDK.jsonEncode(standardVendorOnly);
         }
     });
 };
