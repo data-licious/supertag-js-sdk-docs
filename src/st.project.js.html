@@ -96,6 +96,8 @@
               </li>
               <li><a href="#getProjectReleaseNotes"><i class="alert alert-info"></i><span>getProjectReleaseNotes</span></a>
               </li>
+              <li><a href="#getProjectSites"><i class="alert alert-info"></i><span>getProjectSites</span></a>
+              </li>
               <li><a href="#getProjectApplications"><i class="alert alert-info"></i><span>getProjectApplications</span></a>
               </li>
             </ul>
@@ -249,7 +251,37 @@
           <div class="description"><p>Gets the release notes for a given project</p> </div>
           <pre><code class="language-javascript">StSDK.prototype.getProjectReleaseNotes = function(id) {
     StSDK.validateInt('Project ID', id);
+
     return this.get('projects/' + id + '/release-notes');
+};</code></pre>
+          <section id="getProjectSites">
+            <h1>getProjectSites</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getProjectSites()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>The project ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Gets project sites</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getProjectSites = function(id) {
+    StSDK.validateInt('Project ID', id);
+
+    return this.get('projects/' + id + '/sites');
 };</code></pre>
           <section id="getProjectApplications">
             <h1>getProjectApplications</h1>
