@@ -100,6 +100,8 @@
               </li>
               <li><a href="#installTag"><i class="alert alert-info"></i><span>installTag</span></a>
               </li>
+              <li><a href="#updateTag"><i class="alert alert-info"></i><span>updateTag</span></a>
+              </li>
               <li><a href="#deleteTag"><i class="alert alert-info"></i><span>deleteTag</span></a>
               </li>
               <li><a href="#toggleTag"><i class="alert alert-info"></i><span>toggleTag</span></a>
@@ -283,6 +285,41 @@
     StSDK.validatePlainObj('Tag data', data);
 
     return this.post('projects/' + projectId +'/tags/template/' + tagTemplateId + '?error_format=new', null, data);
+};</code></pre>
+          <section id="updateTag">
+            <h1>updateTag</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.updateTag()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>The tag ID</p></td>
+              </tr>
+              <tr>
+                <td>data</td>
+                <td>Object</td>
+                <td><p>The data of the tag</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Updates a tag</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.updateTag = function(id, data) {
+    StSDK.validateInt('Tag ID', id);
+    StSDK.validatePlainObj('Tag data', data);
+
+    return this.put('tags/' + id, null, data);
 };</code></pre>
           <section id="deleteTag">
             <h1>deleteTag</h1>
