@@ -338,11 +338,11 @@ function _getFieldNameByType(type) {
         case &quot;variable_template_variable&quot;:
             return &quot;parameter_value&quot;;
         case &quot;affinity_group_variable&quot;:
-            throw &quot;Not implemented&quot;;
+            return &quot;&quot;;
         case &quot;rule_bound_variable&quot;:
-            throw &quot;Not implemented&quot;;
+            return &quot;&quot;;
         default:
-            throw 'Undefined type';
+            return &quot;&quot;;
     }
 }
 
