@@ -92,6 +92,8 @@
               </li>
               <li><a href="#updateRule"><i class="alert alert-info"></i><span>updateRule</span></a>
               </li>
+              <li><a href="#deleteRule"><i class="alert alert-info"></i><span>deleteRule</span></a>
+              </li>
               <li><a href="#getRuleTypeLabel"><i class="alert alert-info"></i><span>getRuleTypeLabel</span></a>
               </li>
               <li><a href="#getRuleOperatorLabel"><i class="alert alert-info"></i><span>getRuleOperatorLabel</span></a>
@@ -292,6 +294,41 @@
         'selector': data.selector,
         'event_name': data.event_name
     });
+};</code></pre>
+          <section id="deleteRule">
+            <h1>deleteRule</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.deleteRule()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>The rule ID</p></td>
+              </tr>
+              <tr>
+                <td>projectId</td>
+                <td>Number</td>
+                <td><p>The project ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Delete an rule</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.deleteRule = function(id, projectId) {
+    StSDK.validateInt('Rule ID', id);
+    StSDK.validateInt('Project ID', projectId);
+
+    return this.delete('projects/' + projectId + '/rule/' + id);
 };</code></pre>
           <section id="getRuleTypeLabel">
             <h1>getRuleTypeLabel</h1>
