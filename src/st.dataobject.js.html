@@ -82,6 +82,8 @@
           </ul>
           <div class="scrollspy">
             <ul class="nav nav-list bs-docs-sidenav affix-top">
+              <li><a href="#deleteDataObject"><i class="alert alert-info"></i><span>deleteDataObject</span></a>
+              </li>
               <li><a href="#getProjectDataObjects"><i class="alert alert-info"></i><span>getProjectDataObjects</span></a>
               </li>
               <li><a href="#createDataObject"><i class="alert alert-info"></i><span>createDataObject</span></a>
@@ -96,6 +98,41 @@
           </div>
         </div>
         <div class="span9">
+          <section id="deleteDataObject">
+            <h1>deleteDataObject</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.deleteDataObject()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>The DataObject ID</p></td>
+              </tr>
+              <tr>
+                <td>projectId</td>
+                <td>Number</td>
+                <td><p>The project ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Delete an DataObject</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.deleteDataObject = function(id, projectId) {
+    StSDK.validateInt('DataObject ID', id);
+    StSDK.validateInt('Project ID', projectId);
+
+    return this.delete('projects/' + projectId + '/data-objects/' + id);
+};</code></pre>
           <section id="getProjectDataObjects">
             <h1>getProjectDataObjects</h1>
             <h5 class="subheader"></h5>
