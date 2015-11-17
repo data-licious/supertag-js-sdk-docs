@@ -75,6 +75,7 @@
             <li><a href="st.app.js.html">st.app.js</a></li>
             <li><a href="st.company.js.html">st.company.js</a></li>
             <li><a href="st.dataobject.js.html">st.dataobject.js</a></li>
+            <li><a href="st.deployment.js.html">st.deployment.js</a></li>
             <li><a href="st.helper.js.html">st.helper.js</a></li>
             <li class="active"><a href="st.project.js.html">st.project.js</a></li>
             <li><a href="st.rule.js.html">st.rule.js</a></li>
@@ -91,8 +92,6 @@
               <li><a href="#getCompaniesAndProjects"><i class="alert alert-info"></i><span>getCompaniesAndProjects</span></a>
               </li>
               <li><a href="#getProject"><i class="alert alert-info"></i><span>getProject</span></a>
-              </li>
-              <li><a href="#getProjectDeployHistory"><i class="alert alert-info"></i><span>getProjectDeployHistory</span></a>
               </li>
               <li><a href="#getProjectReleaseNotes"><i class="alert alert-info"></i><span>getProjectReleaseNotes</span></a>
               </li>
@@ -196,34 +195,6 @@
     StSDK.validateInt('Project ID', id);
 
     return this.get('projects/' + id);
-};</code></pre>
-          <section id="getProjectDeployHistory">
-            <h1>getProjectDeployHistory</h1>
-            <h5 class="subheader"></h5>
-            <p>
-              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getProjectDeployHistory()</span>
-            </p>
-          </section>
-          <table class="table table-bordered table-striped">
-            <thead>
-              <tr>
-                <th style="width:20%">Option name</th>
-                <th style="width:20%">Type</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>id</td>
-                <td>Number</td>
-                <td><p>The project ID</p></td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="description"><p>Gets the deployment history for a given project</p> </div>
-          <pre><code class="language-javascript">StSDK.prototype.getProjectDeployHistory = function(id) {
-    StSDK.validateInt('Project ID', id);
-    return this.get('projects/' + id + '/deployments');
 };</code></pre>
           <section id="getProjectReleaseNotes">
             <h1>getProjectReleaseNotes</h1>
