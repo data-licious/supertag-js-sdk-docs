@@ -87,6 +87,8 @@
               </li>
               <li><a href="#getDeploymentDetails"><i class="alert alert-info"></i><span>getDeploymentDetails</span></a>
               </li>
+              <li><a href="#scheduleDeployment"><i class="alert alert-info"></i><span>scheduleDeployment</span></a>
+              </li>
             </ul>
           </div>
         </div>
@@ -154,6 +156,39 @@
     StSDK.validateInt('Deployment ID', deploymentId);
 
     return this.get('projects/' + projectId + '/deployments/' + deploymentId);
+};</code></pre>
+          <section id="scheduleDeployment">
+            <h1>scheduleDeployment</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.scheduleDeployment()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>projectId</td>
+                <td>Number</td>
+                <td><p>Project ID</p></td>
+              </tr>
+              <tr>
+                <td>comment</td>
+                <td>String</td>
+                <td><p>Deployment comment</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Schedule deployment.</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.scheduleDeployment = function(projectId, comment) {
+
+    return this.post('projects/' + projectId + '/deploy', undefined, {comment: comment});
 };
 
 }(window));</code></pre>
