@@ -103,6 +103,8 @@
               </li>
               <li><a href="#updateTag"><i class="alert alert-info"></i><span>updateTag</span></a>
               </li>
+              <li><a href="#duplicateTag"><i class="alert alert-info"></i><span>duplicateTag</span></a>
+              </li>
               <li><a href="#deleteTag"><i class="alert alert-info"></i><span>deleteTag</span></a>
               </li>
               <li><a href="#toggleTag"><i class="alert alert-info"></i><span>toggleTag</span></a>
@@ -327,6 +329,41 @@
     StSDK.validatePlainObj('Tag data', data);
 
     return this.put('projects/' + projectId + '/tags/' + id + '?error_format=new', null, data);
+};</code></pre>
+          <section id="duplicateTag">
+            <h1>duplicateTag</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.duplicateTag()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>projectId</td>
+                <td>Number</td>
+                <td><p>The project ID</p></td>
+              </tr>
+              <tr>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>The tag ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Duplicatge a tag</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.duplicateTag = function(projectId, tagId, newTagName) {
+    StSDK.validateInt('Project ID', projectId);
+    StSDK.validateInt('Tag ID', tagId);
+
+    return this.post('projects/' + projectId + '/tags/duplicate/' + tagId, null, {name: newTagName});
 };</code></pre>
           <section id="deleteTag">
             <h1>deleteTag</h1>
