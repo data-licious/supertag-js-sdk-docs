@@ -89,6 +89,8 @@
               </li>
               <li><a href="#scheduleDeployment"><i class="alert alert-info"></i><span>scheduleDeployment</span></a>
               </li>
+              <li><a href="#scheduleRedeployment"><i class="alert alert-info"></i><span>scheduleRedeployment</span></a>
+              </li>
             </ul>
           </div>
         </div>
@@ -189,6 +191,44 @@
           <pre><code class="language-javascript">StSDK.prototype.scheduleDeployment = function(projectId, comment) {
 
     return this.post('projects/' + projectId + '/deploy', undefined, {comment: comment});
+};</code></pre>
+          <section id="scheduleRedeployment">
+            <h1>scheduleRedeployment</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.scheduleRedeployment()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>projectId</td>
+                <td>Number</td>
+                <td><p>Project ID</p></td>
+              </tr>
+              <tr>
+                <td>version</td>
+                <td>String</td>
+                <td><p>Version to re-deploy</p></td>
+              </tr>
+              <tr>
+                <td>comment</td>
+                <td>String</td>
+                <td><p>Redeployment comment</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Schedule re-deployment.</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.scheduleRedeployment = function(projectId, version, comment) {
+
+    return this.post('projects/' + projectId + '/redeploy/' + version, undefined, {comment: comment});
 };
 
 }(window));</code></pre>
