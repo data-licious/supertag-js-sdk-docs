@@ -107,6 +107,8 @@
               </li>
               <li><a href="#deleteTag"><i class="alert alert-info"></i><span>deleteTag</span></a>
               </li>
+              <li><a href="#codePreview"><i class="alert alert-info"></i><span>codePreview</span></a>
+              </li>
               <li><a href="#toggleTag"><i class="alert alert-info"></i><span>toggleTag</span></a>
               </li>
               <li><a href="#moveTag"><i class="alert alert-info"></i><span>moveTag</span></a>
@@ -393,6 +395,35 @@
     StSDK.validateInt('Tag ID', id);
 
     return this.delete('tags/' + id);
+};</code></pre>
+          <section id="codePreview">
+            <h1>codePreview</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.codePreview()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>The tag ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Deletes a tag</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.codePreview = function(id) {
+    StSDK.validateInt('Tag ID', id);
+
+    return this.get('tags/' + id + '/code-preview');
 };</code></pre>
           <section id="toggleTag">
             <h1>toggleTag</h1>
