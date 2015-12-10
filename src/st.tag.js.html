@@ -107,7 +107,7 @@
               </li>
               <li><a href="#deleteTag"><i class="alert alert-info"></i><span>deleteTag</span></a>
               </li>
-              <li><a href="#getTagcode"><i class="alert alert-info"></i><span>getTagcode</span></a>
+              <li><a href="#getTagCode"><i class="alert alert-info"></i><span>getTagCode</span></a>
               </li>
               <li><a href="#toggleTag"><i class="alert alert-info"></i><span>toggleTag</span></a>
               </li>
@@ -396,11 +396,11 @@
 
     return this.delete('tags/' + id);
 };</code></pre>
-          <section id="getTagcode">
-            <h1>getTagcode</h1>
+          <section id="getTagCode">
+            <h1>getTagCode</h1>
             <h5 class="subheader"></h5>
             <p>
-              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getTagcode()</span>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getTagCode()</span>
             </p>
           </section>
           <table class="table table-bordered table-striped">
@@ -420,7 +420,7 @@
             </tbody>
           </table>
           <div class="description"><p>Gets the code of a tag</p> </div>
-          <pre><code class="language-javascript">StSDK.prototype.getTagcode = function(id) {
+          <pre><code class="language-javascript">StSDK.prototype.getTagCode = function(id) {
     StSDK.validateInt('Tag ID', id);
 
     return this.get('tags/' + id + '/code-preview');
