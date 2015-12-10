@@ -107,7 +107,7 @@
               </li>
               <li><a href="#deleteTag"><i class="alert alert-info"></i><span>deleteTag</span></a>
               </li>
-              <li><a href="#codePreview"><i class="alert alert-info"></i><span>codePreview</span></a>
+              <li><a href="#getTagcode"><i class="alert alert-info"></i><span>getTagcode</span></a>
               </li>
               <li><a href="#toggleTag"><i class="alert alert-info"></i><span>toggleTag</span></a>
               </li>
@@ -360,7 +360,7 @@
               </tr>
             </tbody>
           </table>
-          <div class="description"><p>Duplicatge a tag</p> </div>
+          <div class="description"><p>Duplicates a tag</p> </div>
           <pre><code class="language-javascript">StSDK.prototype.duplicateTag = function(projectId, tagId, newTagName) {
     StSDK.validateInt('Project ID', projectId);
     StSDK.validateInt('Tag ID', tagId);
@@ -396,11 +396,11 @@
 
     return this.delete('tags/' + id);
 };</code></pre>
-          <section id="codePreview">
-            <h1>codePreview</h1>
+          <section id="getTagcode">
+            <h1>getTagcode</h1>
             <h5 class="subheader"></h5>
             <p>
-              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.codePreview()</span>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getTagcode()</span>
             </p>
           </section>
           <table class="table table-bordered table-striped">
@@ -419,8 +419,8 @@
               </tr>
             </tbody>
           </table>
-          <div class="description"><p>Deletes a tag</p> </div>
-          <pre><code class="language-javascript">StSDK.prototype.codePreview = function(id) {
+          <div class="description"><p>Gets the code of a tag</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getTagcode = function(id) {
     StSDK.validateInt('Tag ID', id);
 
     return this.get('tags/' + id + '/code-preview');
