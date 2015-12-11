@@ -99,6 +99,8 @@
               </li>
               <li><a href="#getTagTree"><i class="alert alert-info"></i><span>getTagTree</span></a>
               </li>
+              <li><a href="#getTagFullInfo"><i class="alert alert-info"></i><span>getTagFullInfo</span></a>
+              </li>
               <li><a href="#installTag"><i class="alert alert-info"></i><span>installTag</span></a>
               </li>
               <li><a href="#updateTag"><i class="alert alert-info"></i><span>updateTag</span></a>
@@ -249,6 +251,43 @@
             return tag;
         });
     }
+};</code></pre>
+          <section id="getTagFullInfo">
+            <h1>getTagFullInfo</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getTagFullInfo()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>tagId</td>
+                <td>Number</td>
+                <td><p>The tag ID</p></td>
+              </tr>
+              <tr>
+                <td>projectId</td>
+                <td>Number</td>
+                <td><p>The project ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Gets the full information of a tag</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getTagFullInfo = function(tagId, projectId) {
+    StSDK.validateInt('Tag ID', tagId);
+    StSDK.validateInt('Project ID', projectId);
+
+    return this.get('tags/' + tagId + '/full', {
+        project: projectId
+    });
 };</code></pre>
           <section id="installTag">
             <h1>installTag</h1>
