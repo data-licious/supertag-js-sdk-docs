@@ -91,7 +91,7 @@
               </li>
               <li><a href="#scheduleRedeployment"><i class="alert alert-info"></i><span>scheduleRedeployment</span></a>
               </li>
-              <li><a href="#scheduleRedeployment"><i class="alert alert-info"></i><span>scheduleRedeployment</span></a>
+              <li><a href="#requestDeployment"><i class="alert alert-info"></i><span>requestDeployment</span></a>
               </li>
             </ul>
           </div>
@@ -232,11 +232,11 @@
 
     return this.post('projects/' + projectId + '/redeploy/' + version, undefined, {comment: comment});
 };</code></pre>
-          <section id="scheduleRedeployment">
-            <h1>scheduleRedeployment</h1>
+          <section id="requestDeployment">
+            <h1>requestDeployment</h1>
             <h5 class="subheader"></h5>
             <p>
-              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.scheduleRedeployment()</span>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.requestDeployment()</span>
             </p>
           </section>
           <table class="table table-bordered table-striped">
@@ -261,7 +261,7 @@
             </tbody>
           </table>
           <div class="description"><p>Request deployment.</p> </div>
-          <pre><code class="language-javascript">StSDK.prototype.scheduleRedeployment = function(projectId, message) {
+          <pre><code class="language-javascript">StSDK.prototype.requestDeployment = function(projectId, message) {
 
     return this.post('projects/' + projectId + '/request-deployment', undefined, {message: message});
 };
