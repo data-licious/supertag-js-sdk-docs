@@ -385,6 +385,11 @@
             </thead>
             <tbody>
               <tr>
+                <td>projectId</td>
+                <td>Number</td>
+                <td><p>The project ID</p></td>
+              </tr>
+              <tr>
                 <td>format</td>
                 <td>String</td>
                 <td><p>The format of the response, options being <code>&#39;flat&#39;</code> (default), <code>&#39;grouped&#39;</code>, <code>&#39;grouped_app_only&#39;</code>, <code>&#39;grouped_vendor_only&#39;</code>, <code>&#39;standard&#39;</code> or <code>&#39;standard_vendor_only&#39;</code></p></td>
@@ -512,7 +517,9 @@
      });
 </code></pre>
  </div>
-          <pre><code class="language-javascript">StSDK.prototype.getAppTemplates = function(format) {
+          <pre><code class="language-javascript">StSDK.prototype.getAppTemplates = function(projectId, format) {
+    StSDK.validateInt('Project ID', projectId);
+
     var format = format || StSDK.APP_TEMPLATE_FORMAT_FLAT;
     StSDK.validateOpts('Format', format, [
         StSDK.APP_TEMPLATE_FORMAT_FLAT,
@@ -523,8 +530,9 @@
         StSDK.APP_TEMPLATE_FORMAT_STANDARD_VENDOR_ONLY
     ]);
 
-    return this.get('app-templates', null, {
+    return this.get('projects/' + projectId + '/app-templates', null, {
         dataFilter: function(data, type) {
+
             if (StSDK.APP_TEMPLATE_FORMAT_FLAT === format || 'json' !== type) {
                 return data;
             }
