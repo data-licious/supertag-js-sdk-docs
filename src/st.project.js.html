@@ -91,6 +91,10 @@
               </li>
               <li><a href="#getCompaniesAndProjects"><i class="alert alert-info"></i><span>getCompaniesAndProjects</span></a>
               </li>
+              <li><a href="#getCompaniesData"><i class="alert alert-info"></i><span>getCompaniesData</span></a>
+              </li>
+              <li><a href="#getProjectsDataByCompany"><i class="alert alert-info"></i><span>getProjectsDataByCompany</span></a>
+              </li>
               <li><a href="#getProject"><i class="alert alert-info"></i><span>getProject</span></a>
               </li>
               <li><a href="#getCode"><i class="alert alert-info"></i><span>getCode</span></a>
@@ -170,6 +174,47 @@
     });
 
     return this.get('companies/projects' + params);
+};</code></pre>
+          <section id="getCompaniesData">
+            <h1>getCompaniesData</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getCompaniesData()</span>
+            </p>
+          </section>
+          <div class="description"><p>Gets companies and projects with details relevant to the specific user</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getCompaniesData = function() {
+
+    return this.get('companies/home-list');
+};</code></pre>
+          <section id="getProjectsDataByCompany">
+            <h1>getProjectsDataByCompany</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getProjectsDataByCompany()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>The company ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Gets rojects with details by company for Home Page</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getProjectsDataByCompany = function(companyId) {
+    StSDK.validateInt('Company ID', companyId);
+
+    return this.get('companies/' + companyId + '/projects');
 };</code></pre>
           <section id="getProject">
             <h1>getProject</h1>
