@@ -97,6 +97,8 @@
               </li>
               <li><a href="#getProject"><i class="alert alert-info"></i><span>getProject</span></a>
               </li>
+              <li><a href="#getProjectAudit"><i class="alert alert-info"></i><span>getProjectAudit</span></a>
+              </li>
               <li><a href="#getCode"><i class="alert alert-info"></i><span>getCode</span></a>
               </li>
               <li><a href="#getProjectReleaseNotes"><i class="alert alert-info"></i><span>getProjectReleaseNotes</span></a>
@@ -212,7 +214,7 @@
               </tr>
             </tbody>
           </table>
-          <div class="description"><p>Gets rojects with details by company for Home Page</p> </div>
+          <div class="description"><p>Gets projects with details by company for Home Page</p> </div>
           <pre><code class="language-javascript">StSDK.prototype.getProjectsDataByCompany = function(companyId) {
     StSDK.validateInt('Company ID', companyId);
 
@@ -246,6 +248,35 @@
     StSDK.validateInt('Project ID', id);
 
     return this.get('projects/' + id);
+};</code></pre>
+          <section id="getProjectAudit">
+            <h1>getProjectAudit</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getProjectAudit()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>The project ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Gets the audit of a given project</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getProjectAudit = function(id) {
+    StSDK.validateInt('Project ID', id);
+
+    return this.get('projects/' + id + '/audits');
 };</code></pre>
           <section id="getCode">
             <h1>getCode</h1>
