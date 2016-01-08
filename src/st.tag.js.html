@@ -117,6 +117,12 @@
               </li>
               <li><a href="#moveTag"><i class="alert alert-info"></i><span>moveTag</span></a>
               </li>
+              <li><a href="#addFunctionCall"><i class="alert alert-info"></i><span>addFunctionCall</span></a>
+              </li>
+              <li><a href="#functionCallInfo"><i class="alert alert-info"></i><span>functionCallInfo</span></a>
+              </li>
+              <li><a href="#getFunctionShortList"><i class="alert alert-info"></i><span>getFunctionShortList</span></a>
+              </li>
             </ul>
           </div>
         </div>
@@ -600,6 +606,110 @@
         targetTagId: targetTagId,
         nodePosition: pos
     });
+};</code></pre>
+          <section id="addFunctionCall">
+            <h1>addFunctionCall</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.addFunctionCall()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>projectId</td>
+                <td>Number</td>
+                <td><p>The project ID</p></td>
+              </tr>
+              <tr>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>The tag ID</p></td>
+              </tr>
+              <tr>
+                <td>functionData</td>
+                <td>Object</td>
+                <td><p>Object parameter (<strong>function_id</strong> , <strong>params</strong>)</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Add function call for tag container</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.addFunctionCall = function(projectId, tagId, functionData) {
+    StSDK.validateInt('Project ID', projectId);
+    StSDK.validateInt('Tag ID', tagId);
+
+    return this.post('projects/' + projectId + '/function-call/' + tagId, null, functionData);
+};</code></pre>
+          <section id="functionCallInfo">
+            <h1>functionCallInfo</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.functionCallInfo()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>projectId</td>
+                <td>Number</td>
+                <td><p>The project ID</p></td>
+              </tr>
+              <tr>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>Function call ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Get function call info</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.functionCallInfo = function(projectId, tagId) {
+    StSDK.validateInt('Project ID', projectId);
+    StSDK.validateInt('Tag ID', tagId);
+
+    return this.get('projects/' + projectId + '/function-call/' + tagId + '/info');
+};</code></pre>
+          <section id="getFunctionShortList">
+            <h1>getFunctionShortList</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getFunctionShortList()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>projectId</td>
+                <td>Number</td>
+                <td><p>The project ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Get all functions for project</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getFunctionShortList = function(projectId) {
+    StSDK.validateInt('Project ID', projectId);
+
+    return this.get('projects/' + projectId + '/functions?simple=1');
 };
 }(window, document, jQuery));</code></pre>
         </div>
