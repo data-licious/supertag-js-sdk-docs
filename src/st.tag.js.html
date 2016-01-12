@@ -129,6 +129,8 @@
               </li>
               <li><a href="#functionCallInfo"><i class="alert alert-info"></i><span>functionCallInfo</span></a>
               </li>
+              <li><a href="#editFunctionCall"><i class="alert alert-info"></i><span>editFunctionCall</span></a>
+              </li>
               <li><a href="#getFunctionShortList"><i class="alert alert-info"></i><span>getFunctionShortList</span></a>
               </li>
             </ul>
@@ -811,6 +813,46 @@
     StSDK.validateInt('Tag ID', tagId);
 
     return this.get('projects/' + projectId + '/function-call/' + tagId + '/info');
+};</code></pre>
+          <section id="editFunctionCall">
+            <h1>editFunctionCall</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.editFunctionCall()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>projectId</td>
+                <td>Number</td>
+                <td><p>The project ID</p></td>
+              </tr>
+              <tr>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>The function call tag ID</p></td>
+              </tr>
+              <tr>
+                <td>functionData</td>
+                <td>Object</td>
+                <td><p>Object parameter (<strong>function_id</strong> , <strong>params</strong>)</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Edit function call tag</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.editFunctionCall = function(projectId, tagId, functionData) {
+    StSDK.validateInt('Project ID', projectId);
+    StSDK.validateInt('Function call tag ID', tagId);
+
+    return this.put('projects/' + projectId + '/function-call/' + tagId + '/edit', null, functionData);
 };</code></pre>
           <section id="getFunctionShortList">
             <h1>getFunctionShortList</h1>
