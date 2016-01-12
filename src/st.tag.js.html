@@ -105,6 +105,14 @@
               </li>
               <li><a href="#createTagFunction"><i class="alert alert-info"></i><span>createTagFunction</span></a>
               </li>
+              <li><a href="#getTagFunctionsList"><i class="alert alert-info"></i><span>getTagFunctionsList</span></a>
+              </li>
+              <li><a href="#getTagFunctionInfo"><i class="alert alert-info"></i><span>getTagFunctionInfo</span></a>
+              </li>
+              <li><a href="#getTagFunctionCallInfo"><i class="alert alert-info"></i><span>getTagFunctionCallInfo</span></a>
+              </li>
+              <li><a href="#editTagFunction"><i class="alert alert-info"></i><span>editTagFunction</span></a>
+              </li>
               <li><a href="#updateTag"><i class="alert alert-info"></i><span>updateTag</span></a>
               </li>
               <li><a href="#duplicateTag"><i class="alert alert-info"></i><span>duplicateTag</span></a>
@@ -360,18 +368,140 @@
                 <td><p>The project ID</p></td>
               </tr>
               <tr>
-                <td>params</td>
+                <td>param</td>
                 <td>Object</td>
                 <td><p>Object parameter (<strong>function_name</strong> , <strong>name</strong>, description, top_code, params)</p></td>
               </tr>
             </tbody>
           </table>
-          <div class="description"><p>Create Tag Function</p> </div>
-          <pre><code class="language-javascript">StSDK.prototype.createTagFunction = function(projectId, params) {
+          <div class="description"><p>Create Tag Function.</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.createTagFunction = function(projectId, param) {
     StSDK.validateInt('Project ID', projectId);
-    StSDK.validatePlainObj('Create Tag function parameter', params);
+    StSDK.validatePlainObj('Create Tag Function parameter', param);
 
-    return this.post('projects/' + projectId +'/functions', null, params);
+    return this.post('projects/' + projectId +'/functions', null, param);
+};</code></pre>
+          <section id="getTagFunctionsList">
+            <h1>getTagFunctionsList</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getTagFunctionsList()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>projectId</td>
+                <td>Number</td>
+                <td><p>The project ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Retrieve list of Tag Functions of a project.</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getTagFunctionsList = function(projectId) {
+    StSDK.validateInt('Project ID', projectId);
+
+    return this.get('projects/' + projectId +'/functions');
+};</code></pre>
+          <section id="getTagFunctionInfo">
+            <h1>getTagFunctionInfo</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getTagFunctionInfo()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>fnId</td>
+                <td>Number</td>
+                <td><p>Tag Function ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Retrieve a Tag Function Container information.</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getTagFunctionInfo = function(fnId) {
+    StSDK.validateInt('Function Id ', fnId);
+
+    return this.get('functions/' + fnId +'/info');
+};</code></pre>
+          <section id="getTagFunctionCallInfo">
+            <h1>getTagFunctionCallInfo</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getTagFunctionCallInfo()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>fnId</td>
+                <td>Number</td>
+                <td><p>Tag Function ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Retrieve a Tag Function Call information.</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getTagFunctionCallInfo = function(fnId) {
+    StSDK.validateInt('Function Id ', fnId);
+
+    return this.get('function-call/' + fnId +'/info');
+};</code></pre>
+          <section id="editTagFunction">
+            <h1>editTagFunction</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.editTagFunction()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>fnId</td>
+                <td>Number</td>
+                <td><p>Tag Function Id</p></td>
+              </tr>
+              <tr>
+                <td>param</td>
+                <td>Object</td>
+                <td><p>Object parameter (<strong>function_name</strong> , <strong>name</strong>, description, top_code, params)</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Edit a Tag Function.</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.editTagFunction = function(fnId, param) {
+    StSDK.validateInt('Tag Function ID', fnId);
+    StSDK.validatePlainObj('Edit Tag Function parameter', param);
+
+    return this.put('functions/' + fnId +'/edit', null, param);
 };</code></pre>
           <section id="updateTag">
             <h1>updateTag</h1>
