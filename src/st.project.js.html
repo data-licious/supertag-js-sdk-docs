@@ -89,6 +89,8 @@
               </li>
               <li><a href="#PROJECT_APP_FORMAT_STANDARD_WITH_PLATFORM"><i class="alert alert-success"></i><span>PROJECT_APP_FORMAT_STANDARD_WITH_PLATFORM</span></a>
               </li>
+              <li><a href="#PROJECT_VERSION_UNDEPLOYED"><i class="alert alert-success"></i><span>PROJECT_VERSION_UNDEPLOYED</span></a>
+              </li>
               <li><a href="#getCompaniesAndProjects"><i class="alert alert-info"></i><span>getCompaniesAndProjects</span></a>
               </li>
               <li><a href="#getCompaniesData"><i class="alert alert-info"></i><span>getCompaniesData</span></a>
@@ -142,6 +144,15 @@
           </section>
           <div class="description"> </div>
           <pre><code class="language-javascript">StSDK.PROJECT_APP_FORMAT_STANDARD_WITH_PLATFORM = 'standard_with_platform';</code></pre>
+          <section id="PROJECT_VERSION_UNDEPLOYED">
+            <h1>PROJECT_VERSION_UNDEPLOYED</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>StSDK.PROJECT_VERSION_UNDEPLOYED</span>
+            </p>
+          </section>
+          <div class="description"> </div>
+          <pre><code class="language-javascript">StSDK.PROJECT_VERSION_UNDEPLOYED = 'undeployed';</code></pre>
           <section id="getCompaniesAndProjects">
             <h1>getCompaniesAndProjects</h1>
             <h5 class="subheader"></h5>
@@ -273,10 +284,22 @@
             </tbody>
           </table>
           <div class="description"><p>Gets the audit of a given project</p> </div>
-          <pre><code class="language-javascript">StSDK.prototype.getProjectAudit = function(id) {
+          <pre><code class="language-javascript">StSDK.prototype.getProjectAudit = function(id, version) {
     StSDK.validateInt('Project ID', id);
 
-    return this.get('projects/' + id + '/audits');
+    var url = 'projects/' + id + '/audits';
+
+    if (undefined !== version) {
+        if (version !== parseInt(version) &amp;&amp; version !== StSDK.PROJECT_VERSION_UNDEPLOYED) {
+            StSDK.error('[Version] must be an integer or &quot;' + StSDK.PROJECT_VERSION_UNDEPLOYED + '&quot;.');
+        }
+
+        return this.get(url, {
+            project_version: version
+        });
+    }
+
+    return this.get(url);
 };</code></pre>
           <section id="getCode">
             <h1>getCode</h1>
