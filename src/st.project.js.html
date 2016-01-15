@@ -113,6 +113,8 @@
               </li>
               <li><a href="#deleteApplication"><i class="alert alert-info"></i><span>deleteApplication</span></a>
               </li>
+              <li><a href="#getProjectInstallCode"><i class="alert alert-info"></i><span>getProjectInstallCode</span></a>
+              </li>
             </ul>
           </div>
         </div>
@@ -553,6 +555,35 @@
     StSDK.validateInt('Application ID', appId);
 
     return this.delete('projects/' + projectId + '/apps/' + appId);
+};</code></pre>
+          <section id="getProjectInstallCode">
+            <h1>getProjectInstallCode</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getProjectInstallCode()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>projectId</td>
+                <td>Number</td>
+                <td><p>The project ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Retrieve project Install Code.</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getProjectInstallCode = function(projectId) {
+    StSDK.validateInt('Project ID', projectId);
+
+    return this.get('projects/' + projectId + '/code-install');
 };
 }(window));</code></pre>
         </div>
