@@ -133,6 +133,10 @@
               </li>
               <li><a href="#getFunctionShortList"><i class="alert alert-info"></i><span>getFunctionShortList</span></a>
               </li>
+              <li><a href="#getCopyDryData"><i class="alert alert-info"></i><span>getCopyDryData</span></a>
+              </li>
+              <li><a href="#copyToProject"><i class="alert alert-info"></i><span>copyToProject</span></a>
+              </li>
             </ul>
           </div>
         </div>
@@ -882,7 +886,72 @@
     StSDK.validateInt('Project ID', projectId);
 
     return this.get('projects/' + projectId + '/functions?simple=1');
+};</code></pre>
+          <section id="getCopyDryData">
+            <h1>getCopyDryData</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getCopyDryData()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>tagId</td>
+                <td>Number</td>
+                <td><p>The root tag ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Get all tags, data-objects and rules will be duplicated on the tag copying</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getCopyDryData = function(tagId) {
+    StSDK.validateInt('Tag ID', tagId);
+
+    return this.get('tags/' + tagId + '/copy-dry');
+};</code></pre>
+          <section id="copyToProject">
+            <h1>copyToProject</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.copyToProject()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>projectId</td>
+                <td>Number</td>
+                <td><p>Copy TO Project ID</p></td>
+              </tr>
+              <tr>
+                <td>tagId</td>
+                <td>Number</td>
+                <td><p>The tag ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Copy a tag to another project</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.copyToProject = function(tagId, projectId) {
+    StSDK.validateInt('Project ID', projectId);
+    StSDK.validateInt('Tag ID', tagId);
+
+    return this.post('tags/' + tagId + '/copy-to-project/' + projectId);
 };
+
 }(window, document, jQuery));</code></pre>
         </div>
       </div>
