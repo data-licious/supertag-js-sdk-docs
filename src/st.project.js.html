@@ -99,6 +99,8 @@
               </li>
               <li><a href="#getProject"><i class="alert alert-info"></i><span>getProject</span></a>
               </li>
+              <li><a href="#updateProject"><i class="alert alert-info"></i><span>updateProject</span></a>
+              </li>
               <li><a href="#getProjectAudit"><i class="alert alert-info"></i><span>getProjectAudit</span></a>
               </li>
               <li><a href="#getCode"><i class="alert alert-info"></i><span>getCode</span></a>
@@ -265,6 +267,52 @@
     StSDK.validateInt('Project ID', id);
 
     return this.get('projects/' + id);
+};</code></pre>
+          <section id="updateProject">
+            <h1>updateProject</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.updateProject()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>projectId</td>
+                <td>Number</td>
+                <td><p>The project ID</p></td>
+              </tr>
+              <tr>
+                <td>data</td>
+                <td>Object</td>
+                <td><p>The project data</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Updates an project</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.updateProject = function(projectId, data) {
+    StSDK.validateInt('Project ID', projectId);
+    var updateData = {
+        'async': data.async,
+        'compressor': data.compressor,
+        'minify_js': data.minify_js,
+        'name': data.name,
+        'description': data.description,
+        'deployment_type': data.deployment_type,
+        'hosted_subdomain': data.hosted_subdomain,
+        'include_turbobytes_code': data.include_turbobytes_code === 'true',
+        'obfuscate_js': data.obfuscate_js
+
+    };
+
+    return this.put('projects/' + projectId, null, updateData);
 };</code></pre>
           <section id="getProjectAudit">
             <h1>getProjectAudit</h1>
