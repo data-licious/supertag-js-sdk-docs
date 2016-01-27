@@ -83,6 +83,12 @@
           </ul>
           <div class="scrollspy">
             <ul class="nav nav-list bs-docs-sidenav affix-top">
+              <li><a href="#PROJECT_ROLE_ADMINISTRATOR"><i class="alert alert-success"></i><span>PROJECT_ROLE_ADMINISTRATOR</span></a>
+              </li>
+              <li><a href="#PROJECT_ROLE_EDITOR"><i class="alert alert-success"></i><span>PROJECT_ROLE_EDITOR</span></a>
+              </li>
+              <li><a href="#PROJECT_ROLE_VIEWER"><i class="alert alert-success"></i><span>PROJECT_ROLE_VIEWER</span></a>
+              </li>
               <li><a href="#PROJECT_APP_FORMAT_FLAT"><i class="alert alert-success"></i><span>PROJECT_APP_FORMAT_FLAT</span></a>
               </li>
               <li><a href="#PROJECT_APP_FORMAT_GROUPED_WITH_PLATFORM"><i class="alert alert-success"></i><span>PROJECT_APP_FORMAT_GROUPED_WITH_PLATFORM</span></a>
@@ -121,10 +127,39 @@
               </li>
               <li><a href="#getProjectAccessRights"><i class="alert alert-info"></i><span>getProjectAccessRights</span></a>
               </li>
+              <li><a href="#revokeProjectAccess"><i class="alert alert-info"></i><span>revokeProjectAccess</span></a>
+              </li>
             </ul>
           </div>
         </div>
         <div class="span9">
+          <section id="PROJECT_ROLE_ADMINISTRATOR">
+            <h1>PROJECT_ROLE_ADMINISTRATOR</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>StSDK.PROJECT_ROLE_ADMINISTRATOR</span>
+            </p>
+          </section>
+          <div class="description"> </div>
+          <pre><code class="language-javascript">StSDK.PROJECT_ROLE_ADMINISTRATOR = 'administrator';</code></pre>
+          <section id="PROJECT_ROLE_EDITOR">
+            <h1>PROJECT_ROLE_EDITOR</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>StSDK.PROJECT_ROLE_EDITOR</span>
+            </p>
+          </section>
+          <div class="description"> </div>
+          <pre><code class="language-javascript">StSDK.PROJECT_ROLE_EDITOR = 'editor';</code></pre>
+          <section id="PROJECT_ROLE_VIEWER">
+            <h1>PROJECT_ROLE_VIEWER</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>StSDK.PROJECT_ROLE_VIEWER</span>
+            </p>
+          </section>
+          <div class="description"> </div>
+          <pre><code class="language-javascript">StSDK.PROJECT_ROLE_VIEWER = 'viewer';</code></pre>
           <section id="PROJECT_APP_FORMAT_FLAT">
             <h1>PROJECT_APP_FORMAT_FLAT</h1>
             <h5 class="subheader"></h5>
@@ -694,6 +729,51 @@
     StSDK.validateInt('Project ID', projectId);
 
     return this.get('projects/' + projectId + '/access-rights');
+};</code></pre>
+          <section id="revokeProjectAccess">
+            <h1>revokeProjectAccess</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.revokeProjectAccess()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>projectId</td>
+                <td>Number</td>
+                <td><p>The project ID</p></td>
+              </tr>
+              <tr>
+                <td>userId</td>
+                <td>Number</td>
+                <td><p>The User ID</p></td>
+              </tr>
+              <tr>
+                <td>role</td>
+                <td>string</td>
+                <td><p>[editor|viewer|administrator]</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Revoke project Access Rights</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.revokeProjectAccess = function(projectId, userId, role) {
+    StSDK.validateInt('Project ID', projectId);
+    StSDK.validateInt('User ID', userId);
+    StSDK.validateOpts('Format', role, [
+        StSDK.PROJECT_ROLE_ADMINISTRATOR,
+        StSDK.PROJECT_ROLE_EDITOR,
+        StSDK.PROJECT_ROLE_VIEWER
+    ]);
+
+    return this.delete('projects/' + projectId + '/revoke-access/' + userId + '/' + role);
 };
 }(window));</code></pre>
         </div>
