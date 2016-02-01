@@ -471,13 +471,23 @@
                 <td>Number</td>
                 <td><p>The project ID</p></td>
               </tr>
+              <tr>
+                <td>withDefault</td>
+                <td>String</td>
+                <td><p>Flag with default</p></td>
+              </tr>
             </tbody>
           </table>
           <div class="description"><p>Gets project sites</p> </div>
-          <pre><code class="language-javascript">StSDK.prototype.getProjectSites = function(id) {
+          <pre><code class="language-javascript">StSDK.prototype.getProjectSites = function(id, withDefault) {
     StSDK.validateInt('Project ID', id);
+    var paramWithDefault = '';
+    if (withDefault) {
+        paramWithDefault = '?with_default=1';
 
-    return this.get('projects/' + id + '/sites?with_default=1');
+    }
+
+    return this.get('projects/' + id + '/sites' + paramWithDefault);
 };</code></pre>
           <section id="runProjectDeployPreview">
             <h1>runProjectDeployPreview</h1>
