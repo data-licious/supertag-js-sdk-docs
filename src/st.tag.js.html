@@ -80,6 +80,7 @@
             <li><a href="st.project.js.html">st.project.js</a></li>
             <li><a href="st.rule.js.html">st.rule.js</a></li>
             <li class="active"><a href="st.tag.js.html">st.tag.js</a></li>
+            <li><a href="st.tag.template.js.html">st.tag.template.js</a></li>
           </ul>
           <div class="scrollspy">
             <ul class="nav nav-list bs-docs-sidenav affix-top">
@@ -776,7 +777,7 @@
               </tr>
             </tbody>
           </table>
-          <div class="description"><p>Add function call for tag container</p> </div>
+          <div class="description"><p>Adds function call for a tag container</p> </div>
           <pre><code class="language-javascript">StSDK.prototype.addFunctionCall = function(projectId, tagId, functionData) {
     StSDK.validateInt('Project ID', projectId);
     StSDK.validateInt('Tag ID', tagId);
@@ -811,7 +812,7 @@
               </tr>
             </tbody>
           </table>
-          <div class="description"><p>Get function call info</p> </div>
+          <div class="description"><p>Gets function call info</p> </div>
           <pre><code class="language-javascript">StSDK.prototype.functionCallInfo = function(projectId, tagId) {
     StSDK.validateInt('Project ID', projectId);
     StSDK.validateInt('Tag ID', tagId);
@@ -851,7 +852,7 @@
               </tr>
             </tbody>
           </table>
-          <div class="description"><p>Edit function call tag</p> </div>
+          <div class="description"><p>Edits function call tag</p> </div>
           <pre><code class="language-javascript">StSDK.prototype.editFunctionCall = function(projectId, tagId, functionData) {
     StSDK.validateInt('Project ID', projectId);
     StSDK.validateInt('Function call tag ID', tagId);
@@ -881,7 +882,7 @@
               </tr>
             </tbody>
           </table>
-          <div class="description"><p>Get all functions for project</p> </div>
+          <div class="description"><p>Gets all functions for a project</p> </div>
           <pre><code class="language-javascript">StSDK.prototype.getFunctionShortList = function(projectId) {
     StSDK.validateInt('Project ID', projectId);
 
@@ -910,7 +911,7 @@
               </tr>
             </tbody>
           </table>
-          <div class="description"><p>Get all tags, data-objects and rules will be duplicated on the tag copying</p> </div>
+          <div class="description"><p>Gets all tags, data-objects and rules will be duplicated on the tag copying</p> </div>
           <pre><code class="language-javascript">StSDK.prototype.getCopyDryData = function(tagId) {
     StSDK.validateInt('Tag ID', tagId);
 
@@ -944,14 +945,13 @@
               </tr>
             </tbody>
           </table>
-          <div class="description"><p>Copy a tag to another project</p> </div>
+          <div class="description"><p>Copies a tag to another project</p> </div>
           <pre><code class="language-javascript">StSDK.prototype.copyToProject = function(tagId, projectId) {
     StSDK.validateInt('Project ID', projectId);
     StSDK.validateInt('Tag ID', tagId);
 
     return this.post('tags/' + tagId + '/copy-to-project/' + projectId);
 };
-
 }(window, document, jQuery));</code></pre>
         </div>
       </div>
