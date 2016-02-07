@@ -86,6 +86,12 @@
             <ul class="nav nav-list bs-docs-sidenav affix-top">
               <li><a href="#getCompany"><i class="alert alert-info"></i><span>getCompany</span></a>
               </li>
+              <li><a href="#getCompanyAccessRights"><i class="alert alert-info"></i><span>getCompanyAccessRights</span></a>
+              </li>
+              <li><a href="#grantCompanyAccess"><i class="alert alert-info"></i><span>grantCompanyAccess</span></a>
+              </li>
+              <li><a href="#revokeCompanyAccess"><i class="alert alert-info"></i><span>revokeCompanyAccess</span></a>
+              </li>
             </ul>
           </div>
         </div>
@@ -118,6 +124,111 @@
     StSDK.validateInt('Company ID', id);
 
     return this.get('companies/' + id);
+};</code></pre>
+          <section id="getCompanyAccessRights">
+            <h1>getCompanyAccessRights</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getCompanyAccessRights()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>The company ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Gets the access rights of a given company</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getCompanyAccessRights = function (id) {
+    StSDK.validateInt('Company ID', id);
+
+    return this.get('companies/' + id + '/access-rights');
+};</code></pre>
+          <section id="grantCompanyAccess">
+            <h1>grantCompanyAccess</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.grantCompanyAccess()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>companyId</td>
+                <td>Number</td>
+                <td><p>The company ID</p></td>
+              </tr>
+              <tr>
+                <td>email</td>
+                <td>string</td>
+                <td><p>The User email</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Grant company Access Rights</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.grantCompanyAccess = function(companyId, email, boolInvite) {
+    StSDK.validateInt('company ID', companyId);
+
+    var data = {};
+    if (boolInvite) {
+        data = {
+            'invite': 1
+        };
+    }
+
+    return this.post('companies/' + companyId + '/access/' + email, null, data);
+};</code></pre>
+          <section id="revokeCompanyAccess">
+            <h1>revokeCompanyAccess</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.revokeCompanyAccess()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>companyId</td>
+                <td>Number</td>
+                <td><p>The company ID</p></td>
+              </tr>
+              <tr>
+                <td>userId</td>
+                <td>Number</td>
+                <td><p>The User ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Revoke company Access Rights</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.revokeCompanyAccess = function(companyId, userId) {
+    StSDK.validateInt('company ID', companyId);
+    StSDK.validateInt('User ID', userId);
+
+    return this.delete('companies/' + companyId + '/access/' + userId);
 };
 }(window));</code></pre>
         </div>
