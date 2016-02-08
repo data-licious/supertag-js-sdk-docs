@@ -140,6 +140,8 @@
               </li>
               <li><a href="#installTag"><i class="alert alert-info"></i><span>installTag</span></a>
               </li>
+              <li><a href="#createProject"><i class="alert alert-info"></i><span>createProject</span></a>
+              </li>
             </ul>
           </div>
         </div>
@@ -1007,6 +1009,44 @@
     return this.post('projects/' + projectId +'/tags/template/' + tagTemplateId, {
         error_format: 'new'
     }, data);
+};</code></pre>
+          <section id="createProject">
+            <h1>createProject</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.createProject()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>companyId</td>
+                <td>Number</td>
+                <td><p>The company ID</p></td>
+              </tr>
+              <tr>
+                <td>data</td>
+                <td>Object</td>
+                <td><p>The site data</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Create project</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.createProject = function(companyId, data) {
+    StSDK.validateInt('Company ID', companyId);
+    var createData = {
+        'name': data.name,
+        'async': data.async
+    };
+
+    return this.post('companies/' + companyId + '/project', null, createData);
 };
 }(window));</code></pre>
         </div>
