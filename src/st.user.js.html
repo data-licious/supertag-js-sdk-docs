@@ -76,58 +76,33 @@
             <li><a href="st.company.js.html">st.company.js</a></li>
             <li><a href="st.dataobject.js.html">st.dataobject.js</a></li>
             <li><a href="st.deployment.js.html">st.deployment.js</a></li>
-            <li class="active"><a href="st.helper.js.html">st.helper.js</a></li>
+            <li><a href="st.helper.js.html">st.helper.js</a></li>
             <li><a href="st.project.js.html">st.project.js</a></li>
             <li><a href="st.rule.js.html">st.rule.js</a></li>
             <li><a href="st.tag.js.html">st.tag.js</a></li>
             <li><a href="st.tag.template.js.html">st.tag.template.js</a></li>
-            <li><a href="st.user.js.html">st.user.js</a></li>
+            <li class="active"><a href="st.user.js.html">st.user.js</a></li>
           </ul>
           <div class="scrollspy">
             <ul class="nav nav-list bs-docs-sidenav affix-top">
-              <li><a href="#buildUrlParams"><i class="alert alert-info"></i><span>buildUrlParams</span></a>
+              <li><a href="#getCurrentUserAccessDetails"><i class="alert alert-info"></i><span>getCurrentUserAccessDetails</span></a>
               </li>
             </ul>
           </div>
         </div>
         <div class="span9">
-          <section id="buildUrlParams">
-            <h1>buildUrlParams</h1>
+          <section id="getCurrentUserAccessDetails">
+            <h1>getCurrentUserAccessDetails</h1>
             <h5 class="subheader"></h5>
             <p>
-              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.buildUrlParams()</span>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getCurrentUserAccessDetails()</span>
             </p>
           </section>
-          <table class="table table-bordered table-striped">
-            <thead>
-              <tr>
-                <th style="width:20%">Option name</th>
-                <th style="width:20%">Type</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>params</td>
-                <td>Object</td>
-                <td><p>The query parameters in an object literal</p></td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="description"><p>Compile params object in URL parameters. Will not append param on empty value.<br />Please, note that &quot;?&quot; will be added in front if result is not an empty string.</p> </div>
-          <pre><code class="language-javascript">StSDK.prototype.buildUrlParams = function(params) {
-    var filtered = {};
-    for (var key in params) {
-        if (null !== params[key] &amp;&amp; undefined !== params[key] &amp;&amp; '' !== params[key]) {
-            filtered[key] = params[key];
-        }
-    }
-
-    var res = $.param(filtered);
-
-    return res ? '?' + res : res;
+          <div class="description"><p>Get user access details</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getCurrentUserAccessDetails = function() {
+    return this.get('users/current-user-access');
 };
-}(window, jQuery));</code></pre>
+}(window, document, jQuery));</code></pre>
         </div>
       </div>
     </div>
