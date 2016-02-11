@@ -92,6 +92,10 @@
               </li>
               <li><a href="#revokeCompanyAccess"><i class="alert alert-info"></i><span>revokeCompanyAccess</span></a>
               </li>
+              <li><a href="#updateCompanySettings"><i class="alert alert-info"></i><span>updateCompanySettings</span></a>
+              </li>
+              <li><a href="#getCompanySettings"><i class="alert alert-info"></i><span>getCompanySettings</span></a>
+              </li>
             </ul>
           </div>
         </div>
@@ -229,6 +233,74 @@
     StSDK.validateInt('User ID', userId);
 
     return this.delete('companies/' + companyId + '/revoke-access/' + userId);
+};</code></pre>
+          <section id="updateCompanySettings">
+            <h1>updateCompanySettings</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.updateCompanySettings()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>The company ID</p></td>
+              </tr>
+              <tr>
+                <td>data</td>
+                <td>Object</td>
+                <td><p>The comapny settings</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Updates company settings</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.updateCompanySettings = function(id, data) {
+    StSDK.validateInt('Company ID', id);
+
+    return this.put('comapnies/' + id + '/setings', null, {
+        'name': data.name,
+        'new_ip_range': data.new_ip_range,
+        'test_ip': data.test_ip,
+        'delete_ip_ranges': data.delete_ip_ranges,
+    });
+};</code></pre>
+          <section id="getCompanySettings">
+            <h1>getCompanySettings</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getCompanySettings()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>The company ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Get company settings</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getCompanySettings = function(id) {
+    StSDK.validateInt('Company ID', id);
+
+    return this.get('comapnies/' + id + '/setings');
 };
 }(window));</code></pre>
         </div>
