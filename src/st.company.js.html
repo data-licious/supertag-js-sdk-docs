@@ -96,6 +96,8 @@
               </li>
               <li><a href="#getCompanySettings"><i class="alert alert-info"></i><span>getCompanySettings</span></a>
               </li>
+              <li><a href="#getStarted"><i class="alert alert-info"></i><span>getStarted</span></a>
+              </li>
             </ul>
           </div>
         </div>
@@ -123,7 +125,7 @@
               </tr>
             </tbody>
           </table>
-          <div class="description"><p>Gets the details of a given company</p> </div>
+          <div class="description"><p>Company details</p> </div>
           <pre><code class="language-javascript">StSDK.prototype.getCompany = function (id) {
     StSDK.validateInt('Company ID', id);
 
@@ -301,7 +303,49 @@
     StSDK.validateInt('Company ID', id);
 
     return this.get('companies/' + id + '/settings');
+};</code></pre>
+          <section id="getStarted">
+            <h1>getStarted</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getStarted()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>companyName</td>
+                <td>String</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>projectName</td>
+                <td>String</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>projectSite</td>
+                <td>String</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Creates first project and company</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getStarted = function (companyName, projectName, projectSite) {
+    return this.post('get-started', {
+        'companyName': companyName,
+        'projectName': projectName,
+        'projectSite': projectSite
+    });
 };
+
 }(window));</code></pre>
         </div>
       </div>
