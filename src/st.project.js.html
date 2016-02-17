@@ -142,6 +142,8 @@
               </li>
               <li><a href="#createProject"><i class="alert alert-info"></i><span>createProject</span></a>
               </li>
+              <li><a href="#deleteProject"><i class="alert alert-info"></i><span>deleteProject</span></a>
+              </li>
             </ul>
           </div>
         </div>
@@ -1047,6 +1049,35 @@
     };
 
     return this.post('companies/' + companyId + '/project', null, createData);
+};</code></pre>
+          <section id="deleteProject">
+            <h1>deleteProject</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.deleteProject()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>projectId</td>
+                <td>Number</td>
+                <td><p>The project ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Delete the project</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.deleteProject = function(projectId) {
+    StSDK.validateInt('Project ID', projectId);
+
+    return this.delete('projects/' + projectId);
 };
 }(window));</code></pre>
         </div>
