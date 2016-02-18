@@ -126,10 +126,10 @@
             </tbody>
           </table>
           <div class="description"><p>Company details</p> </div>
-          <pre><code class="language-javascript">StSDK.prototype.getCompany = function (id) {
+          <pre><code class="language-javascript">StSDK.prototype.getCompany = function (id, ajaxOpts) {
     StSDK.validateInt('Company ID', id);
 
-    return this.get('companies/' + id);
+    return this.get('companies/' + id, {}, ajaxOpts);
 };</code></pre>
           <section id="getCompanyAccessRights">
             <h1>getCompanyAccessRights</h1>

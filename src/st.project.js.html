@@ -313,10 +313,10 @@
             </tbody>
           </table>
           <div class="description"><p>Gets the details of a given project</p> </div>
-          <pre><code class="language-javascript">StSDK.prototype.getProject = function(id) {
+          <pre><code class="language-javascript">StSDK.prototype.getProject = function(id, ajaxOpts) {
     StSDK.validateInt('Project ID', id);
 
-    return this.get('projects/' + id);
+    return this.get('projects/' + id, {}, ajaxOpts);
 };</code></pre>
           <section id="updateProject">
             <h1>updateProject</h1>
