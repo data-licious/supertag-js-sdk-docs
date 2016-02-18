@@ -98,6 +98,8 @@
               </li>
               <li><a href="#getStarted"><i class="alert alert-info"></i><span>getStarted</span></a>
               </li>
+              <li><a href="#deleteCompany"><i class="alert alert-info"></i><span>deleteCompany</span></a>
+              </li>
             </ul>
           </div>
         </div>
@@ -344,6 +346,35 @@
         'projectName': projectName,
         'projectSite': projectSite
     });
+};</code></pre>
+          <section id="deleteCompany">
+            <h1>deleteCompany</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.deleteCompany()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>companyId</td>
+                <td>Number</td>
+                <td><p>The company ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Delete company</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.deleteCompany = function(companyId) {
+    StSDK.validateInt('company ID', companyId);
+
+    return this.delete('companies/' + companyId);
 };
 
 }(window));</code></pre>
