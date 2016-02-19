@@ -92,6 +92,8 @@
               </li>
               <li><a href="#getProjectRule"><i class="alert alert-info"></i><span>getProjectRule</span></a>
               </li>
+              <li><a href="#getProjectRuleByRuleTag"><i class="alert alert-info"></i><span>getProjectRuleByRuleTag</span></a>
+              </li>
               <li><a href="#getProjectRules"><i class="alert alert-info"></i><span>getProjectRules</span></a>
               </li>
               <li><a href="#getProjectRulesSimpleList"><i class="alert alert-info"></i><span>getProjectRulesSimpleList</span></a>
@@ -271,6 +273,41 @@
     StSDK.validateInt('Rule ID', ruleId);
 
     return this.get('projects/' + id + '/rules/' + ruleId);
+};</code></pre>
+          <section id="getProjectRuleByRuleTag">
+            <h1>getProjectRuleByRuleTag</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getProjectRuleByRuleTag()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>ID of the project</p></td>
+              </tr>
+              <tr>
+                <td>ruleTagId</td>
+                <td>Number</td>
+                <td><p>ID of the RuleTag</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Gets rule with conditions by Rule Tag</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getProjectRuleByRuleTag = function(id, ruleTagId) {
+    StSDK.validateInt('Project ID', id);
+    StSDK.validateInt('RuleTag ID', ruleTagId);
+
+    return this.get('projects/' + id + '/rule-by-tag/' + ruleTagId);
 };</code></pre>
           <section id="getProjectRules">
             <h1>getProjectRules</h1>
