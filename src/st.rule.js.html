@@ -90,6 +90,8 @@
               </li>
               <li><a href="#getDataObjectList"><i class="alert alert-info"></i><span>getDataObjectList</span></a>
               </li>
+              <li><a href="#getProjectRule"><i class="alert alert-info"></i><span>getProjectRule</span></a>
+              </li>
               <li><a href="#getProjectRules"><i class="alert alert-info"></i><span>getProjectRules</span></a>
               </li>
               <li><a href="#getProjectRulesSimpleList"><i class="alert alert-info"></i><span>getProjectRulesSimpleList</span></a>
@@ -234,6 +236,41 @@
     StSDK.validateInt('Project ID', id);
 
     return this.get('projects/' + id + '/data-objects?simple=1');
+};</code></pre>
+          <section id="getProjectRule">
+            <h1>getProjectRule</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getProjectRule()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>ID of the project</p></td>
+              </tr>
+              <tr>
+                <td>ruleId</td>
+                <td>Number</td>
+                <td><p>ID of the rule</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Gets rule with conditions</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getProjectRule = function(id, ruleId) {
+    StSDK.validateInt('Project ID', id);
+    StSDK.validateInt('Rule ID', ruleId);
+
+    return this.get('projects/' + id + '/rules/' + ruleId);
 };</code></pre>
           <section id="getProjectRules">
             <h1>getProjectRules</h1>
