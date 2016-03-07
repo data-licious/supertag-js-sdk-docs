@@ -144,6 +144,8 @@
               </li>
               <li><a href="#deleteProject"><i class="alert alert-info"></i><span>deleteProject</span></a>
               </li>
+              <li><a href="#getProjectCodeForCodeCompare"><i class="alert alert-info"></i><span>getProjectCodeForCodeCompare</span></a>
+              </li>
             </ul>
           </div>
         </div>
@@ -1078,6 +1080,35 @@
     StSDK.validateInt('Project ID', projectId);
 
     return this.delete('projects/' + projectId);
+};</code></pre>
+          <section id="getProjectCodeForCodeCompare">
+            <h1>getProjectCodeForCodeCompare</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getProjectCodeForCodeCompare()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>projectId</td>
+                <td>Number</td>
+                <td><p>The project ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Get project Codes versions for code compare</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getProjectCodeForCodeCompare = function(projectId, baseVersion, matchVersion) {
+    StSDK.validateInt('Project ID', projectId);
+
+    return this.get('projects/' + projectId + '/code-compare/' + baseVersion + '/' + matchVersion);
 };
 }(window));</code></pre>
         </div>
