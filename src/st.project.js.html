@@ -146,6 +146,8 @@
               </li>
               <li><a href="#getProjectCodeForCodeCompare"><i class="alert alert-info"></i><span>getProjectCodeForCodeCompare</span></a>
               </li>
+              <li><a href="#getProjectCodeFileSize"><i class="alert alert-info"></i><span>getProjectCodeFileSize</span></a>
+              </li>
             </ul>
           </div>
         </div>
@@ -1109,6 +1111,35 @@
     StSDK.validateInt('Project ID', projectId);
 
     return this.get('projects/' + projectId + '/code-compare/' + baseVersion + '/' + matchVersion);
+};</code></pre>
+          <section id="getProjectCodeFileSize">
+            <h1>getProjectCodeFileSize</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getProjectCodeFileSize()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>projectId</td>
+                <td>Number</td>
+                <td><p>The project ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Get File size of Project Code</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getProjectCodeFileSize = function(projectId) {
+    StSDK.validateInt('Project ID', projectId);
+
+    return this.get('projects/' + projectId + '/code-size');
 };
 }(window));</code></pre>
         </div>
