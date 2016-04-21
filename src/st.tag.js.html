@@ -136,6 +136,8 @@
               </li>
               <li><a href="#copyToProject"><i class="alert alert-info"></i><span>copyToProject</span></a>
               </li>
+              <li><a href="#getTagAudit"><i class="alert alert-info"></i><span>getTagAudit</span></a>
+              </li>
             </ul>
           </div>
         </div>
@@ -908,6 +910,35 @@
     StSDK.validateInt('Tag ID', tagId);
 
     return this.post('tags/' + tagId + '/copy-to-project/' + projectId);
+};</code></pre>
+          <section id="getTagAudit">
+            <h1>getTagAudit</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getTagAudit()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>tagId</td>
+                <td>Number</td>
+                <td><p>The tag ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Gets tag audit</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getTagAudit = function(tagId) {
+    StSDK.validateInt('Tag ID', tagId);
+
+    return this.get('tags/' + tagId + '/audits');
 };
 }(window, document, jQuery));</code></pre>
         </div>
