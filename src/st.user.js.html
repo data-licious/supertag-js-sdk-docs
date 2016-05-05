@@ -85,22 +85,43 @@
           </ul>
           <div class="scrollspy">
             <ul class="nav nav-list bs-docs-sidenav affix-top">
-              <li><a href="#getCurrentUserAccessDetails"><i class="alert alert-info"></i><span>getCurrentUserAccessDetails</span></a>
+              <li><a href="#updateUser"><i class="alert alert-info"></i><span>updateUser</span></a>
               </li>
             </ul>
           </div>
         </div>
         <div class="span9">
-          <section id="getCurrentUserAccessDetails">
-            <h1>getCurrentUserAccessDetails</h1>
+          <section id="updateUser">
+            <h1>updateUser</h1>
             <h5 class="subheader"></h5>
             <p>
-              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getCurrentUserAccessDetails()</span>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.updateUser()</span>
             </p>
           </section>
-          <div class="description"><p>Get user access details</p> </div>
-          <pre><code class="language-javascript">StSDK.prototype.getCurrentUserAccessDetails = function() {
-    return this.get('users/current-user-access');
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>userId</td>
+                <td>Number</td>
+                <td><p>The user ID</p></td>
+              </tr>
+              <tr>
+                <td>data</td>
+                <td>Object</td>
+                <td><p>The user data</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Updates a user</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.updateUser = function(userId, data) {
+    return this.put('users/' + userId, null, data);
 };
 }(window, document, jQuery));</code></pre>
         </div>
