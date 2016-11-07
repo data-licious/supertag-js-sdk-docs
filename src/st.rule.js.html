@@ -89,6 +89,10 @@
               </li>
               <li><a href="#applyRuleToTag"><i class="alert alert-info"></i><span>applyRuleToTag</span></a>
               </li>
+              <li><a href="#addEventToProject"><i class="alert alert-info"></i><span>addEventToProject</span></a>
+              </li>
+              <li><a href="#addBusinessRuleToProject"><i class="alert alert-info"></i><span>addBusinessRuleToProject</span></a>
+              </li>
               <li><a href="#getDataObjectList"><i class="alert alert-info"></i><span>getDataObjectList</span></a>
               </li>
               <li><a href="#getProjectRule"><i class="alert alert-info"></i><span>getProjectRule</span></a>
@@ -211,6 +215,82 @@
 
     return this.post('projects/' + projectId + '/apply/' + ruleId + '/' + tagId);
 };</code></pre>
+          <section id="addEventToProject">
+            <h1>addEventToProject</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.addEventToProject()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>projectId</td>
+                <td>Number</td>
+                <td><p>The project ID</p></td>
+              </tr>
+              <tr>
+                <td>eventId</td>
+                <td>Number</td>
+                <td><p>The event ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Add event to project</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.addEventToProject = function(projectId, eventId) {
+    StSDK.validateInt('Project ID', projectId);
+    StSDK.validateInt('Event ID', eventId);
+
+    return this.post('projects/' + projectId + '/add-event/' + eventId);
+};</code></pre>
+          <section id="addBusinessRuleToProject">
+            <h1>addBusinessRuleToProject</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.addBusinessRuleToProject()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>projectId</td>
+                <td>Number</td>
+                <td><p>The project ID</p></td>
+              </tr>
+              <tr>
+                <td>ruleId</td>
+                <td>Number</td>
+                <td><p>The rule ID</p></td>
+              </tr>
+              <tr>
+                <td>tagId</td>
+                <td>Number</td>
+                <td><p>The container tag ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Add Business rule to project</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.addBusinessRuleToProject = function(projectId, ruleId, tagId) {
+    StSDK.validateInt('Project ID', projectId);
+    StSDK.validateInt('Rule ID', ruleId);
+    StSDK.validateInt('Tag ID', tagId);
+
+    return this.post('projects/' + projectId + '/add-business-rule/' + ruleId + '/' + tagId);
+};</code></pre>
           <section id="getDataObjectList">
             <h1>getDataObjectList</h1>
             <h5 class="subheader"></h5>
@@ -238,7 +318,7 @@
           <pre><code class="language-javascript">StSDK.prototype.getDataObjectList = function(id) {
     StSDK.validateInt('Project ID', id);
 
-    return this.get('projects/' + id + '/data-objects?simple=1');
+    return this.get('projects/' + id + '/data-objects');
 };</code></pre>
           <section id="getProjectRule">
             <h1>getProjectRule</h1>
@@ -677,7 +757,7 @@
             return 'Change';
     }
 
-    return &quot;&quot;;
+    return (typeName) ? typeName : '';
 };
 
 

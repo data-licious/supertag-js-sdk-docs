@@ -101,9 +101,21 @@
               </li>
               <li><a href="#APP_TEMPLATE_FORMAT_STANDARD_VENDOR_ONLY"><i class="alert alert-success"></i><span>APP_TEMPLATE_FORMAT_STANDARD_VENDOR_ONLY</span></a>
               </li>
+              <li><a href="#getJsDoc"><i class="alert alert-info"></i><span>getJsDoc</span></a>
+              </li>
               <li><a href="#getApp"><i class="alert alert-info"></i><span>getApp</span></a>
               </li>
               <li><a href="#getAppTemplate"><i class="alert alert-info"></i><span>getAppTemplate</span></a>
+              </li>
+              <li><a href="#getAllAppTemplates"><i class="alert alert-info"></i><span>getAllAppTemplates</span></a>
+              </li>
+              <li><a href="#addAppTemplateWhitelist"><i class="alert alert-info"></i><span>addAppTemplateWhitelist</span></a>
+              </li>
+              <li><a href="#addAppTemplateBlacklist"><i class="alert alert-info"></i><span>addAppTemplateBlacklist</span></a>
+              </li>
+              <li><a href="#removeAppTemplateFromWhitelist"><i class="alert alert-info"></i><span>removeAppTemplateFromWhitelist</span></a>
+              </li>
+              <li><a href="#removeAppTemplateFromBlacklist"><i class="alert alert-info"></i><span>removeAppTemplateFromBlacklist</span></a>
               </li>
               <li><a href="#createAppTemplate"><i class="alert alert-info"></i><span>createAppTemplate</span></a>
               </li>
@@ -189,6 +201,28 @@
           </section>
           <div class="description"> </div>
           <pre><code class="language-javascript">StSDK.APP_TEMPLATE_FORMAT_STANDARD_VENDOR_ONLY = 'standard_vendor_only';</code></pre>
+          <section id="getJsDoc">
+            <h1>getJsDoc</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getJsDoc()</span>
+            </p>
+          </section>
+          <div class="description"><p>Gets js-doc for new ui</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getJsDoc = function(projectType) {
+    var paramStr = '';
+    if (projectType) {
+        StSDK.validateOpts('Format', projectType, [
+            StSDK.PROJECT_TYPE_WEBSITE,
+            StSDK.PROJECT_TYPE_IOS,
+            StSDK.PROJECT_TYPE_ANDROID
+        ]);
+        paramStr = '?project_type=' + projectType;
+
+    }
+
+    return this.get('help/new-ui-js-doc' + paramStr);
+};</code></pre>
           <section id="getApp">
             <h1>getApp</h1>
             <h5 class="subheader"></h5>
@@ -276,6 +310,157 @@
     StSDK.validateInt('App template ID', id);
 
     return this.get('app-templates/' + id);
+};</code></pre>
+          <section id="getAllAppTemplates">
+            <h1>getAllAppTemplates</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getAllAppTemplates()</span>
+            </p>
+          </section>
+          <div class="description"><p>Gets all app template simple list [id, name]</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getAllAppTemplates = function() {
+    return this.get('all-app-templates');
+};</code></pre>
+          <section id="addAppTemplateWhitelist">
+            <h1>addAppTemplateWhitelist</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.addAppTemplateWhitelist()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>The Company ID</p></td>
+              </tr>
+              <tr>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>The app template ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Add an app template to company whitelist</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.addAppTemplateWhitelist = function(companyId, appTemplateId) {
+    StSDK.validateInt('Company Id', companyId);
+    StSDK.validateInt('App Template Id', appTemplateId);
+
+    return this.post('company/' + companyId + '/whitelist/' + appTemplateId, null, {});
+};</code></pre>
+          <section id="addAppTemplateBlacklist">
+            <h1>addAppTemplateBlacklist</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.addAppTemplateBlacklist()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>The Company ID</p></td>
+              </tr>
+              <tr>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>The app template ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Add an app template to company blacklist</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.addAppTemplateBlacklist = function(companyId, appTemplateId) {
+    StSDK.validateInt('Company Id', companyId);
+    StSDK.validateInt('App Template Id', appTemplateId);
+
+    return this.post('company/' + companyId + '/blacklist/' + appTemplateId, null, {});
+};</code></pre>
+          <section id="removeAppTemplateFromWhitelist">
+            <h1>removeAppTemplateFromWhitelist</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.removeAppTemplateFromWhitelist()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>The Company ID</p></td>
+              </tr>
+              <tr>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>The app template ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Remove an app template from company whitelist</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.removeAppTemplateFromWhitelist = function(companyId, appTemplateId) {
+    StSDK.validateInt('Company Id', companyId);
+    StSDK.validateInt('App Template Id', appTemplateId);
+
+    return this.delete('company/' + companyId + '/whitelist/' + appTemplateId);
+};</code></pre>
+          <section id="removeAppTemplateFromBlacklist">
+            <h1>removeAppTemplateFromBlacklist</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.removeAppTemplateFromBlacklist()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>The Company ID</p></td>
+              </tr>
+              <tr>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>The app template ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Remove an app template from company blacklist</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.removeAppTemplateFromBlacklist = function(companyId, appTemplateId) {
+    StSDK.validateInt('Company Id', companyId);
+    StSDK.validateInt('App Template Id', appTemplateId);
+
+    return this.delete('company/' + companyId + '/blacklist/' + appTemplateId);
 };</code></pre>
           <section id="createAppTemplate">
             <h1>createAppTemplate</h1>
@@ -395,6 +580,11 @@
                 <td>format</td>
                 <td>String</td>
                 <td><p>The format of the response, options being <code>&#39;flat&#39;</code> (default), <code>&#39;grouped&#39;</code>, <code>&#39;grouped_app_only&#39;</code>, <code>&#39;grouped_vendor_only&#39;</code>, <code>&#39;standard&#39;</code> or <code>&#39;standard_vendor_only&#39;</code></p></td>
+              </tr>
+              <tr>
+                <td>isInstalledOnly</td>
+                <td>Boolean</td>
+                <td><p>The flag to get only installed App Templates</p></td>
               </tr>
             </tbody>
           </table>
@@ -519,7 +709,7 @@
      });
 </code></pre>
  </div>
-          <pre><code class="language-javascript">StSDK.prototype.getAppTemplates = function(projectId, format) {
+          <pre><code class="language-javascript">StSDK.prototype.getAppTemplates = function(projectId, format, isInstalledOnly) {
     StSDK.validateInt('Project ID', projectId);
 
     var format = format || StSDK.APP_TEMPLATE_FORMAT_FLAT;
@@ -531,8 +721,9 @@
         StSDK.APP_TEMPLATE_FORMAT_STANDARD,
         StSDK.APP_TEMPLATE_FORMAT_STANDARD_VENDOR_ONLY
     ]);
+    var installedParamStr = (isInstalledOnly) ? '?installed_only=1' : '';
 
-    return this.get('projects/' + projectId + '/app-templates', null, {
+    return this.get('projects/' + projectId + '/app-templates' + installedParamStr, null, {
         dataFilter: function(data, type) {
 
             if (StSDK.APP_TEMPLATE_FORMAT_FLAT === format || 'json' !== type) {

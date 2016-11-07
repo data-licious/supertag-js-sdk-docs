@@ -87,6 +87,8 @@
             <ul class="nav nav-list bs-docs-sidenav affix-top">
               <li><a href="#deleteDataObject"><i class="alert alert-info"></i><span>deleteDataObject</span></a>
               </li>
+              <li><a href="#getAllSystemDataObjects"><i class="alert alert-info"></i><span>getAllSystemDataObjects</span></a>
+              </li>
               <li><a href="#getProjectDataObjects"><i class="alert alert-info"></i><span>getProjectDataObjects</span></a>
               </li>
               <li><a href="#createDataObject"><i class="alert alert-info"></i><span>createDataObject</span></a>
@@ -135,6 +137,18 @@
     StSDK.validateInt('Project ID', projectId);
 
     return this.delete('projects/' + projectId + '/data-objects/' + id);
+};</code></pre>
+          <section id="getAllSystemDataObjects">
+            <h1>getAllSystemDataObjects</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getAllSystemDataObjects()</span>
+            </p>
+          </section>
+          <div class="description"><p>Gets system data object types</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getAllSystemDataObjects = function(projectId) {
+
+    return this.get('projects/' + projectId + '/system-data-object-types');
 };</code></pre>
           <section id="getProjectDataObjects">
             <h1>getProjectDataObjects</h1>
@@ -188,6 +202,7 @@
                     num_tags: dataObject.usage ? (dataObject.usage.tags ? dataObject.usage.tags.length : 0) : 0,
                     num_rules: dataObject.usage ? (dataObject.usage.rules ? dataObject.usage.rules.length : 0) : 0,
                     variable_template: dataObject.variable_template,
+                    variable_template_name: dataObject.variable_template_name,
                     parameter_name: dataObject.parameter_name,
                     parameter_value: dataObject.parameter_value,
                     twig_template: dataObject.twig_template,
@@ -305,7 +320,8 @@
           <pre><code class="language-javascript">StSDK.prototype.getDataObjectTypeLabel = function(data) {
     if (data.type === 'variable_template_variable') {
         var _label = _getGetDataObjectTypeLabelByType(data.variable_type);
-        return (_label)?_label:data.vendor; // in case of existed VariableTemplateVariable
+
+        return (_label)?_label:data.variable_template_name; // in case of existed VariableTemplateVariable
     }
 
     return _getGetDataObjectTypeLabelByType(data.type);
@@ -393,7 +409,7 @@ function _getFieldNameByType(type) {
         case &quot;rule_bound_variable&quot;:
             return &quot;&quot;;
         default:
-            return &quot;&quot;;
+            return &quot;value&quot;;
     }
 }
 
@@ -407,7 +423,7 @@ function _getDataObjectTypeInformation(dataObject) {
         {
             type: &quot;variable_template_variable&quot;,
             name: dataObject.vendor,
-            parameterName: dataObject.parameter_name
+            paramName: dataObject.parameter_name
         },
         {
             type: &quot;query_parameter_variable&quot;,
