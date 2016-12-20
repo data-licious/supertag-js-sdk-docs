@@ -87,6 +87,8 @@
             <ul class="nav nav-list bs-docs-sidenav affix-top">
               <li><a href="#addRule"><i class="alert alert-info"></i><span>addRule</span></a>
               </li>
+              <li><a href="#duplicateRule"><i class="alert alert-info"></i><span>duplicateRule</span></a>
+              </li>
               <li><a href="#applyRuleToTag"><i class="alert alert-info"></i><span>applyRuleToTag</span></a>
               </li>
               <li><a href="#addEventToProject"><i class="alert alert-info"></i><span>addEventToProject</span></a>
@@ -176,6 +178,47 @@
     }
 
     return this.post('projects/' + projectId + '/rule', null, ruleObj);
+};</code></pre>
+          <section id="duplicateRule">
+            <h1>duplicateRule</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.duplicateRule()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>id</td>
+                <td>Number</td>
+                <td><p>The rule ID</p></td>
+              </tr>
+              <tr>
+                <td>projectId</td>
+                <td>Number</td>
+                <td><p>The project ID</p></td>
+              </tr>
+              <tr>
+                <td>data</td>
+                <td>Object</td>
+                <td><p>The rule data</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Duplicate an rule</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.duplicateRule = function(id, projectId, data) {
+    StSDK.validateInt('Rule ID', id);
+
+    return this.post('projects/' + projectId + '/rule/' + id, null, {
+        'name': data.name
+    });
 };</code></pre>
           <section id="applyRuleToTag">
             <h1>applyRuleToTag</h1>
