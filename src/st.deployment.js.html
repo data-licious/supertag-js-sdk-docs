@@ -189,12 +189,19 @@
                 <td>String</td>
                 <td><p>Deployment comment</p></td>
               </tr>
+              <tr>
+                <td>tagsToSkip</td>
+                <td>Array.&lt;Number&gt;</td>
+                <td><p>Tag IDs to skip</p></td>
+              </tr>
             </tbody>
           </table>
           <div class="description"><p>Schedule deployment.</p> </div>
-          <pre><code class="language-javascript">StSDK.prototype.scheduleDeployment = function(projectId, comment) {
-
-    return this.post('projects/' + projectId + '/deploy', undefined, {comment: comment});
+          <pre><code class="language-javascript">StSDK.prototype.scheduleDeployment = function(projectId, comment, tagsToSkip) {
+    return this.post('projects/' + projectId + '/deploy', undefined, {
+        comment: comment,
+        tagsToSkip: tagsToSkip
+    });
 };</code></pre>
           <section id="scheduleRedeployment">
             <h1>scheduleRedeployment</h1>
