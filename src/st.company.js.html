@@ -341,11 +341,12 @@
             </tbody>
           </table>
           <div class="description"><p>Creates first project and company</p> </div>
-          <pre><code class="language-javascript">StSDK.prototype.getStarted = function (companyName, projectName, projectSite) {
+          <pre><code class="language-javascript">StSDK.prototype.getStarted = function (companyName, projectName, projectSite,projectType) {
     return this.post('get-started', null, {
         'companyName': companyName,
         'projectName': projectName,
-        'projectSite': projectSite
+        'projectSite': projectSite,
+        'projectType':projectType
     });
 };</code></pre>
           <section id="deleteCompany">
