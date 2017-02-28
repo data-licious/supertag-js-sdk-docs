@@ -133,7 +133,7 @@
               </li>
               <li><a href="#getFunctionShortList"><i class="alert alert-info"></i><span>getFunctionShortList</span></a>
               </li>
-              <li><a href="#scheduleRedeployment"><i class="alert alert-info"></i><span>scheduleRedeployment</span></a>
+              <li><a href="#restoreTag"><i class="alert alert-info"></i><span>restoreTag</span></a>
               </li>
               <li><a href="#getCopyDryData"><i class="alert alert-info"></i><span>getCopyDryData</span></a>
               </li>
@@ -850,11 +850,11 @@
 
     return this.get('projects/' + projectId + '/functions?simple=1');
 };</code></pre>
-          <section id="scheduleRedeployment">
-            <h1>scheduleRedeployment</h1>
+          <section id="restoreTag">
+            <h1>restoreTag</h1>
             <h5 class="subheader"></h5>
             <p>
-              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.scheduleRedeployment()</span>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.restoreTag()</span>
             </p>
           </section>
           <table class="table table-bordered table-striped">
@@ -879,7 +879,7 @@
             </tbody>
           </table>
           <div class="description"><p>Restore Tag.</p> </div>
-          <pre><code class="language-javascript">StSDK.prototype.scheduleRedeployment = function(tagId, parentId) {
+          <pre><code class="language-javascript">StSDK.prototype.restoreTag = function(tagId, parentId) {
 
     return this.post('tags/restore/' + tagId + '/' + parentId, undefined, {});
 };</code></pre>
