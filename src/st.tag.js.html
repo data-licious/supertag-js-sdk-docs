@@ -133,6 +133,8 @@
               </li>
               <li><a href="#getFunctionShortList"><i class="alert alert-info"></i><span>getFunctionShortList</span></a>
               </li>
+              <li><a href="#scheduleRedeployment"><i class="alert alert-info"></i><span>scheduleRedeployment</span></a>
+              </li>
               <li><a href="#getCopyDryData"><i class="alert alert-info"></i><span>getCopyDryData</span></a>
               </li>
               <li><a href="#copyToProject"><i class="alert alert-info"></i><span>copyToProject</span></a>
@@ -847,6 +849,39 @@
     StSDK.validateInt('Project ID', projectId);
 
     return this.get('projects/' + projectId + '/functions?simple=1');
+};</code></pre>
+          <section id="scheduleRedeployment">
+            <h1>scheduleRedeployment</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.scheduleRedeployment()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>tagId</td>
+                <td>Number</td>
+                <td><p>Tag ID</p></td>
+              </tr>
+              <tr>
+                <td>parentId</td>
+                <td>Number</td>
+                <td><p>Parent Container ID</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Restore Tag.</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.scheduleRedeployment = function(tagId, parentId) {
+
+    return this.post('tags/restore/' + tagId + '/' + parentId, undefined, {});
 };</code></pre>
           <section id="getCopyDryData">
             <h1>getCopyDryData</h1>
