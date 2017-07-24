@@ -76,27 +76,31 @@
             <li><a href="st.company.js.html">st.company.js</a></li>
             <li><a href="st.dataobject.js.html">st.dataobject.js</a></li>
             <li><a href="st.deployment.js.html">st.deployment.js</a></li>
-            <li class="active"><a href="st.helper.js.html">st.helper.js</a></li>
+            <li><a href="st.helper.js.html">st.helper.js</a></li>
             <li><a href="st.project.js.html">st.project.js</a></li>
             <li><a href="st.rule.js.html">st.rule.js</a></li>
             <li><a href="st.tag.js.html">st.tag.js</a></li>
-            <li><a href="st.tag.monitoring.js.html">st.tag.monitoring.js</a></li>
+            <li class="active"><a href="st.tag.monitoring.js.html">st.tag.monitoring.js</a></li>
             <li><a href="st.tag.template.js.html">st.tag.template.js</a></li>
             <li><a href="st.user.js.html">st.user.js</a></li>
           </ul>
           <div class="scrollspy">
             <ul class="nav nav-list bs-docs-sidenav affix-top">
-              <li><a href="#buildUrlParams"><i class="alert alert-info"></i><span>buildUrlParams</span></a>
+              <li><a href="#getTagMonitoringDashboards"><i class="alert alert-info"></i><span>getTagMonitoringDashboards</span></a>
+              </li>
+              <li><a href="#createTagMonitoringDashboards"><i class="alert alert-info"></i><span>createTagMonitoringDashboards</span></a>
+              </li>
+              <li><a href="#updateTagMonitoringDashboards"><i class="alert alert-info"></i><span>updateTagMonitoringDashboards</span></a>
               </li>
             </ul>
           </div>
         </div>
         <div class="span9">
-          <section id="buildUrlParams">
-            <h1>buildUrlParams</h1>
+          <section id="getTagMonitoringDashboards">
+            <h1>getTagMonitoringDashboards</h1>
             <h5 class="subheader"></h5>
             <p>
-              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.buildUrlParams()</span>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.getTagMonitoringDashboards()</span>
             </p>
           </section>
           <table class="table table-bordered table-striped">
@@ -109,26 +113,86 @@
             </thead>
             <tbody>
               <tr>
-                <td>params</td>
-                <td>Object</td>
-                <td><p>The query parameters in an object literal</p></td>
+                <td>projectId</td>
+                <td></td>
+                <td><p>The Project ID.</p></td>
               </tr>
             </tbody>
           </table>
-          <div class="description"><p>Compile params object in URL parameters. Will not append param on empty value.<br />Please, note that &quot;?&quot; will be added in front if result is not an empty string.</p> </div>
-          <pre><code class="language-javascript">StSDK.prototype.buildUrlParams = function(params) {
-    var filtered = {};
-    for (var key in params) {
-        if (null !== params[key] &amp;&amp; undefined !== params[key] &amp;&amp; '' !== params[key]) {
-            filtered[key] = params[key];
-        }
-    }
-
-    var res = $.param(filtered);
-
-    return res ? '?' + res : res;
+          <div class="description"><p>Gets all the tag monitoring dashboards</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.getTagMonitoringDashboards = function(projectId) {
+    return this.get('tag-monitoring/' + projectId + '/dashboards');
+};</code></pre>
+          <section id="createTagMonitoringDashboards">
+            <h1>createTagMonitoringDashboards</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.createTagMonitoringDashboards()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>projectId</td>
+                <td></td>
+                <td><p>The Project ID.</p></td>
+              </tr>
+              <tr>
+                <td>data</td>
+                <td></td>
+                <td><p>request data.</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Create tag monitoring dashboard</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.createTagMonitoringDashboards = function(projectId, data) {
+    return this.post('tag-monitoring/' + projectId + '/dashboards', null, data);
+};</code></pre>
+          <section id="updateTagMonitoringDashboards">
+            <h1>updateTagMonitoringDashboards</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.updateTagMonitoringDashboards()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>projectId</td>
+                <td></td>
+                <td><p>The Project ID.</p></td>
+              </tr>
+              <tr>
+                <td>dashboardId</td>
+                <td></td>
+                <td><p>The dashboard ID.</p></td>
+              </tr>
+              <tr>
+                <td>data</td>
+                <td></td>
+                <td><p>request data.</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Update tag monitoring dashboard</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.updateTagMonitoringDashboards = function(projectId, dashboardId, data) {
+    return this.put('tag-monitoring/' + projectId + '/dashboards/' + dashboardId, null, data);
 };
-}(window, jQuery));</code></pre>
+}(window, document, jQuery));</code></pre>
         </div>
       </div>
     </div>
