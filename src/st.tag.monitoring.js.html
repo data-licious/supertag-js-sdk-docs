@@ -92,6 +92,8 @@
               </li>
               <li><a href="#updateTagMonitoringDashboards"><i class="alert alert-info"></i><span>updateTagMonitoringDashboards</span></a>
               </li>
+              <li><a href="#deleteTagMonitoringDashboards"><i class="alert alert-info"></i><span>deleteTagMonitoringDashboards</span></a>
+              </li>
             </ul>
           </div>
         </div>
@@ -191,6 +193,43 @@
           <div class="description"><p>Update tag monitoring dashboard</p> </div>
           <pre><code class="language-javascript">StSDK.prototype.updateTagMonitoringDashboards = function(projectId, dashboardId, data) {
     return this.put('tag-monitoring/' + projectId + '/dashboards/' + dashboardId, null, data);
+};</code></pre>
+          <section id="deleteTagMonitoringDashboards">
+            <h1>deleteTagMonitoringDashboards</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>StSDK.prototype.deleteTagMonitoringDashboards()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>projectId</td>
+                <td></td>
+                <td><p>The Project ID.</p></td>
+              </tr>
+              <tr>
+                <td>dashboardId</td>
+                <td></td>
+                <td><p>The dashboard ID.</p></td>
+              </tr>
+              <tr>
+                <td>data</td>
+                <td></td>
+                <td><p>request data.</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Deletes tag monitoring dashboard</p> </div>
+          <pre><code class="language-javascript">StSDK.prototype.deleteTagMonitoringDashboards = function(projectId, dashboardId) {
+    return this.delete('tag-monitoring/' + projectId + '/dashboards/' + dashboardId);
 };
 }(window, document, jQuery));</code></pre>
         </div>
